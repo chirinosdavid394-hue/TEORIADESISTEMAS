@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- EDITAR: Cambia el título si lo deseas -->
+  <title>OVA – Conceptos Fundamentales de la Teoría General de Sistemas</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Hoja de estilos principal -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       BARRA DE PROGRESO DE LECTURA
+  ============================================================ -->
+  <div id="reading-progress">
+    <div id="reading-progress-bar"></div>
+  </div>
+
+  <!-- ============================================================
+       NAVEGACIÓN FIJA
+  ============================================================ -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <!-- EDITAR: Cambia el nombre/logo del curso -->
+      <a class="nav-logo" href="#inicio">
+        <i class="fas fa-project-diagram"></i>
+        <span>TGS</span>
+      </a>
+
+      <!-- Menú escritorio -->
+      <ul class="nav-menu" id="nav-menu">
+        <li><a href="#inicio"   class="nav-link"><i class="fas fa-home"></i> Inicio</a></li>
+        <li><a href="#teoria"   class="nav-link"><i class="fas fa-book-open"></i> Teoría</a></li>
+        <li><a href="#ejemplos" class="nav-link"><i class="fas fa-lightbulb"></i> Ejemplos</a></li>
+        <li><a href="#video"    class="nav-link"><i class="fas fa-play-circle"></i> Video</a></li>
+        <li><a href="#juegos"   class="nav-link"><i class="fas fa-gamepad"></i> Juegos</a></li>
+        <li><a href="#quiz"     class="nav-link"><i class="fas fa-clipboard-check"></i> Quiz</a></li>
+      </ul>
+
+      <!-- Botón hamburguesa (móvil) -->
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ============================================================
+       INDICADOR DE SECCIÓN ACTIVA
+  ============================================================ -->
+  <div id="section-indicator">
+    <span id="section-indicator-text">Inicio</span>
+  </div>
+
+  <!-- ============================================================
+       HERO / INICIO
+  ============================================================ -->
+  <section id="inicio" class="section hero-section">
+    <div class="hero-bg-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+    </div>
+    <div class="container hero-content">
+      <div class="hero-badge">Objeto Virtual de Aprendizaje</div>
+      <!-- EDITAR: Título principal del OVA -->
+      <h1 class="hero-title">Teoría General<br/>de <span class="accent">Sistemas</span></h1>
+      <!-- EDITAR: Subtítulo descriptivo -->
+      <p class="hero-subtitle">
+        Explora los conceptos fundamentales que nos permiten entender el mundo
+        como un conjunto de sistemas interconectados, dinámicos y adaptativos.
+      </p>
+      <div class="hero-meta">
+        <!-- EDITAR: Datos del curso -->
+        <span><i class="fas fa-university"></i> Ingeniería de Sistemas</span>
+        <span><i class="fas fa-book"></i> 6 Secciones de Aprendizaje</span>
+        <span><i class="fas fa-gamepad"></i> 2 Juegos Interactivos</span>
+      </div>
+      <a href="#teoria" class="btn btn-primary">
+        Comenzar <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN TEORÍA
+  ============================================================ -->
+  <section id="teoria" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Fundamentos Teóricos</span>
+        <h2>Conceptos Clave de la TGS</h2>
+        <p>Desarrollados por Ludwig von Bertalanffy a mediados del siglo XX, estos conceptos son la base de un pensamiento sistémico aplicable a cualquier disciplina.</p>
+      </div>
+
+      <!-- SUBSECCIÓN: ¿Qué es la TGS? -->
+      <div class="theory-intro card">
+        <div class="theory-intro-icon"><i class="fas fa-atom"></i></div>
+        <div class="theory-intro-text">
+          <!-- EDITAR: Contextualización de la TGS -->
+          <h3>¿Qué es la Teoría General de Sistemas?</h3>
+          <p>
+            La <strong>Teoría General de Sistemas (TGS)</strong> es una disciplina científica propuesta por el biólogo y filósofo austriaco
+            <strong>Ludwig von Bertalanffy</strong> entre las décadas de 1940 y 1950. Su objetivo central es encontrar principios y leyes
+            aplicables a <em>todos</em> los sistemas en general, independientemente de su naturaleza —ya sean biológicos, físicos, sociales o tecnológicos.
+          </p>
+          <p>
+            La TGS surge como respuesta al pensamiento reduccionista que dominaba la ciencia: en lugar de estudiar las partes de forma aislada,
+            propone entender cómo las partes <em>interactúan</em> para generar comportamientos y propiedades que no podrían existir en ningún componente individual.
+            Esto la hace relevante en áreas tan diversas como la ingeniería, la biología, la economía, la sociología y la computación.
+          </p>
+          <blockquote>
+            "El todo es más que la suma de sus partes." — Aristóteles, retomado por von Bertalanffy.
+          </blockquote>
+        </div>
+      </div>
+
+      <!-- TARJETAS DE CONCEPTOS -->
+      <!-- EDITAR: Puedes agregar, quitar o modificar las tarjetas de conceptos en esta sección -->
+      <div class="concepts-grid">
+
+        <!-- Concepto 1: Sistema -->
+        <div class="concept-card card" data-concept="sistema">
+          <div class="concept-icon" style="--icon-color: #1a2f5a;">
+            <i class="fas fa-circle-nodes"></i>
+          </div>
+          <h3>Sistema, Subsistema y Suprasistema</h3>
+          <p>
+            Un <strong>sistema</strong> es un conjunto de elementos interrelacionados que trabajan hacia un objetivo común.
+            Todo sistema está compuesto por <strong>subsistemas</strong> (partes internas con funciones propias) y a la vez
+            forma parte de un <strong>suprasistema</strong> o sistema mayor que lo contiene.
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: Un departamento (subsistema) dentro de una empresa (sistema), que opera en un mercado (suprasistema).</span>
+          </div>
+        </div>
+
+        <!-- Concepto 2: Entradas, Procesos, Salidas y Retroalimentación -->
+        <div class="concept-card card" data-concept="ipo">
+          <div class="concept-icon" style="--icon-color: #2ecc71;">
+            <i class="fas fa-arrows-spin"></i>
+          </div>
+          <h3>Entradas, Procesos, Salidas y Retroalimentación</h3>
+          <p>
+            Todo sistema opera bajo un modelo cíclico: recibe <strong>entradas (inputs)</strong> del entorno,
+            las transforma mediante <strong>procesos</strong> internos, genera <strong>salidas (outputs)</strong>
+            y usa la <strong>retroalimentación (feedback)</strong> para ajustar su comportamiento futuro.
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: Una fábrica recibe materias primas (entrada), las fabrica (proceso), produce bienes (salida) y analiza quejas para mejorar (retroalimentación).</span>
+          </div>
+        </div>
+
+        <!-- Concepto 3: Sistemas Abiertos vs. Cerrados -->
+        <div class="concept-card card" data-concept="abierto-cerrado">
+          <div class="concept-icon" style="--icon-color: #e67e22;">
+            <i class="fas fa-door-open"></i>
+          </div>
+          <h3>Sistemas Abiertos vs. Cerrados</h3>
+          <p>
+            Un <strong>sistema abierto</strong> intercambia materia, energía e información con su entorno
+            (la mayoría de los sistemas vivos y sociales). Un <strong>sistema cerrado</strong> no tiene intercambio
+            con el exterior, solo con sus componentes internos (raro en la naturaleza, más común en modelos teóricos).
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: Un ser humano es abierto (come, respira, interactúa). Una reacción química en un recipiente sellado es más cercana a un sistema cerrado.</span>
+          </div>
+        </div>
+
+        <!-- Concepto 4: Homeostasis -->
+        <div class="concept-card card" data-concept="homeostasis">
+          <div class="concept-icon" style="--icon-color: #8e44ad;">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>Homeostasis</h3>
+          <p>
+            La <strong>homeostasis</strong> es la capacidad de un sistema para mantener un estado de equilibrio
+            dinámico ante perturbaciones del entorno. No es un estado estático, sino un proceso activo de regulación
+            constante mediante mecanismos de retroalimentación negativa.
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: El cuerpo humano regula su temperatura corporal en ≈37 °C sin importar el clima exterior.</span>
+          </div>
+        </div>
+
+        <!-- Concepto 5: Entropía -->
+        <div class="concept-card card" data-concept="entropia">
+          <div class="concept-icon" style="--icon-color: #c0392b;">
+            <i class="fas fa-wind"></i>
+          </div>
+          <h3>Entropía</h3>
+          <p>
+            La <strong>entropía</strong> mide el grado de desorden, desorganización o degradación de un sistema.
+            Los sistemas cerrados tienden a aumentar su entropía hasta alcanzar el caos máximo (Segunda Ley de la Termodinámica).
+            Los sistemas abiertos pueden reducir su entropía importando energía del entorno (<em>neguentropía</em>).
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: Una empresa sin gestión ni comunicación tiende al desorden y al fracaso (alta entropía).</span>
+          </div>
+        </div>
+
+        <!-- Concepto 6: Sinergia -->
+        <div class="concept-card card" data-concept="sinergia">
+          <div class="concept-icon" style="--icon-color: #16a085;">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Sinergia</h3>
+          <p>
+            La <strong>sinergia</strong> ocurre cuando la combinación de elementos produce un resultado
+            mayor al que se lograría con cada elemento trabajando de forma independiente.
+            Es la manifestación práctica del principio "el todo es más que la suma de sus partes".
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: Un equipo multidisciplinar de desarrollo de software logra un producto que ningún individuo podría crear solo.</span>
+          </div>
+        </div>
+
+        <!-- Concepto 7: Emergencia -->
+        <div class="concept-card card" data-concept="emergencia">
+          <div class="concept-icon" style="--icon-color: #d35400;">
+            <i class="fas fa-star-of-life"></i>
+          </div>
+          <h3>Emergencia y Totalidad</h3>
+          <p>
+            La <strong>emergencia</strong> se refiere a propiedades o comportamientos que surgen del sistema como un todo
+            y que no existen en ninguno de sus componentes individuales. La <strong>totalidad</strong> implica que el sistema
+            debe analizarse como un todo, no como partes aisladas.
+          </p>
+          <div class="concept-example">
+            <i class="fas fa-tag"></i>
+            <span>Ej: La conciencia emerge de la interacción de neuronas, pero ninguna neurona individual es "consciente".</span>
+          </div>
+        </div>
+
+      </div><!-- /.concepts-grid -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN EJEMPLOS PRÁCTICOS
+  ============================================================ -->
+  <section id="ejemplos" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Aplicación Real</span>
+        <h2>Ejemplos Prácticos de Sistemas</h2>
+        <p>Reconocer los conceptos de la TGS en contextos cotidianos facilita su comprensión y aplicación profesional.</p>
+      </div>
+
+      <!-- EDITAR: Puedes modificar los ejemplos, sus descripciones y tablas -->
+      <div class="examples-tabs">
+        <div class="tabs-nav">
+          <button class="tab-btn active" data-tab="empresa"><i class="fas fa-building"></i> Empresa</button>
+          <button class="tab-btn" data-tab="cuerpo"><i class="fas fa-heartbeat"></i> Cuerpo Humano</button>
+          <button class="tab-btn" data-tab="ecosistema"><i class="fas fa-leaf"></i> Ecosistema</button>
+          <button class="tab-btn" data-tab="universidad"><i class="fas fa-graduation-cap"></i> Universidad</button>
+        </div>
+
+        <!-- Tab: Empresa -->
+        <div class="tab-content active" id="tab-empresa">
+          <div class="example-layout">
+            <div class="example-description card">
+              <h3><i class="fas fa-building"></i> La Empresa como Sistema</h3>
+              <p>Una empresa es un sistema abierto que interactúa constantemente con su entorno (mercado, gobierno, sociedad). Sus departamentos son subsistemas que cooperan para lograr el objetivo organizacional.</p>
+              <div class="exercise-box">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio de Reflexión</h4>
+                <p>Identifica al menos dos mecanismos de <strong>retroalimentación</strong> que usa tu empresa o institución favorita para mejorar sus procesos.</p>
+              </div>
+            </div>
+            <div class="example-table-wrap card">
+              <table class="system-table">
+                <thead><tr><th>Componente TGS</th><th>Ejemplo en la Empresa</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge">Suprasistema</span></td><td>Mercado nacional / economía global</td></tr>
+                  <tr><td><span class="badge">Sistema</span></td><td>La empresa (p. ej. Apple Inc.)</td></tr>
+                  <tr><td><span class="badge">Subsistema</span></td><td>Depto. de Ventas, RRHH, I+D</td></tr>
+                  <tr><td><span class="badge">Entradas</span></td><td>Capital, materias primas, talento humano</td></tr>
+                  <tr><td><span class="badge">Procesos</span></td><td>Producción, logística, marketing</td></tr>
+                  <tr><td><span class="badge">Salidas</span></td><td>Productos, servicios, empleo</td></tr>
+                  <tr><td><span class="badge">Retroalimentación</span></td><td>Encuestas de satisfacción, KPIs</td></tr>
+                  <tr><td><span class="badge">Homeostasis</span></td><td>Control de calidad, gestión de crisis</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Cuerpo Humano -->
+        <div class="tab-content" id="tab-cuerpo">
+          <div class="example-layout">
+            <div class="example-description card">
+              <h3><i class="fas fa-heartbeat"></i> El Cuerpo Humano como Sistema</h3>
+              <p>El organismo humano es uno de los ejemplos más complejos y completos de sistema abierto. Tiene subsistemas especializados (circulatorio, nervioso, digestivo) que actúan en perfecta sinergia para mantener la homeostasis.</p>
+              <div class="exercise-box">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio de Reflexión</h4>
+                <p>¿Cómo se manifiesta la <strong>entropía</strong> en el cuerpo humano con el paso del tiempo? ¿Qué mecanismos la contrarrestan?</p>
+              </div>
+            </div>
+            <div class="example-table-wrap card">
+              <table class="system-table">
+                <thead><tr><th>Componente TGS</th><th>Ejemplo en el Cuerpo</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge">Suprasistema</span></td><td>El entorno natural y social</td></tr>
+                  <tr><td><span class="badge">Sistema</span></td><td>El organismo humano</td></tr>
+                  <tr><td><span class="badge">Subsistema</span></td><td>Sistema nervioso, circulatorio, inmune</td></tr>
+                  <tr><td><span class="badge">Entradas</span></td><td>Alimentos, agua, oxígeno, información sensorial</td></tr>
+                  <tr><td><span class="badge">Procesos</span></td><td>Digestión, respiración, cognición</td></tr>
+                  <tr><td><span class="badge">Salidas</span></td><td>Energía, movimiento, calor, CO₂</td></tr>
+                  <tr><td><span class="badge">Retroalimentación</span></td><td>Sistema nervioso autónomo, hormonas</td></tr>
+                  <tr><td><span class="badge">Homeostasis</span></td><td>Temperatura 37°C, pH sanguíneo 7.4</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Ecosistema -->
+        <div class="tab-content" id="tab-ecosistema">
+          <div class="example-layout">
+            <div class="example-description card">
+              <h3><i class="fas fa-leaf"></i> Un Ecosistema como Sistema</h3>
+              <p>Un ecosistema es un sistema abierto donde organismos vivos (bióticos) e inertes (abióticos) coexisten en una red de relaciones interdependientes, manteniendo un equilibrio dinámico gracias a ciclos de materia y energía.</p>
+              <div class="exercise-box">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio de Reflexión</h4>
+                <p>¿Qué propiedad <strong>emergente</strong> posee un ecosistema que no existe en ninguna especie individual dentro de él?</p>
+              </div>
+            </div>
+            <div class="example-table-wrap card">
+              <table class="system-table">
+                <thead><tr><th>Componente TGS</th><th>Ejemplo en el Ecosistema</th></tr></thead>
+                <tbody>
+                  <tr><td><span class="badge">Suprasistema</span></td><td>Biosfera / planeta Tierra</td></tr>
+                  <tr><td><span class="badge">Sistema</span></td><td>Bosque tropical húmedo</td></tr>
+                  <tr><td><span class="badge">Subsistema</span></td><td>Cadenas tróficas, ciclo del agua</td></tr>
+                  <tr><td><span class="badge">Entradas</span></td><td>Luz solar, lluvia, CO₂</td></tr>
+                  <tr><td><span class="badge">Procesos</span></td><td>Fotosíntesis, descomposición, depredación</td></tr>
+                  <tr><td><span class="badge">Salidas</span></td><td>O₂, biomasa, regulación climática</td></tr>
+                  <tr><td><span class="badge">Retroalimentación</span></td><td>Control poblacional predador-presa</td></tr>
+                  <tr><td><span class="badge">Emergencia</span></td><td>Biodiversidad, resiliencia ecológica</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab: Universidad -->
+        <div class="tab-content" id="tab-universidad">
+          <div class="example-layout">
+            <div class="example-description card">
+              <h3><i class="fas fa-graduation-cap"></i> La Universidad como Sistema</h3>
+              <p>Una universidad es un sistema sociotécnico abierto que transforma estudiantes e ideas en profesionales y conocimiento. Este es el ejemplo propuesto como ejercicio central del OVA.</p>
+              <div class="exercise-box">
+                <h4><i class="fas fa-pencil-alt"></i> Ejercicio Principal</h4>
+                <p>Identifica las <strong>entradas, procesos y salidas</strong> de tu universidad. Además, ¿cuál es el mecanismo de retroalimentación más importante? ¿Cómo se manifiesta la sinergia entre facultades?</p>
+              </div>
+            </div>
+            <div class="example-table-wrap card">
+              <table class="system-table">
+                <thead><tr><th>Componente TGS</th><th>Ejemplo en la Universidad</th></tr></thead>
+                <tbody>
+                  <!-- EDITAR: Modifica los datos de este ejemplo según tu institución -->
+                  <tr><td><span class="badge">Suprasistema</span></td><td>Sistema de educación superior / sociedad</td></tr>
+                  <tr><td><span class="badge">Sistema</span></td><td>Universidad Simón Bolívar</td></tr>
+                  <tr><td><span class="badge">Subsistema</span></td><td>Facultades, decanaturas, bienestar</td></tr>
+                  <tr><td><span class="badge">Entradas</span></td><td>Estudiantes, docentes, presupuesto, conocimiento</td></tr>
+                  <tr><td><span class="badge">Procesos</span></td><td>Docencia, investigación, extensión</td></tr>
+                  <tr><td><span class="badge">Salidas</span></td><td>Profesionales, patentes, publicaciones, impacto social</td></tr>
+                  <tr><td><span class="badge">Retroalimentación</span></td><td>Acreditaciones, tasas de empleo, evaluaciones docentes</td></tr>
+                  <tr><td><span class="badge">Sinergia</span></td><td>Proyectos interdisciplinares entre facultades</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.examples-tabs -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN VIDEO
+  ============================================================ -->
+  <section id="video" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Recurso Audiovisual</span>
+        <h2>Video Explicativo</h2>
+        <p>Complementa tu lectura con este recurso audiovisual sobre los conceptos fundamentales de la TGS.</p>
+      </div>
+      <div class="video-wrapper card">
+        <div class="video-overlay" id="video-overlay">
+          <div class="video-play-btn" id="video-play-btn">
+            <i class="fas fa-play"></i>
+          </div>
+          <p class="video-label">Haz clic para reproducir el video</p>
+        </div>
+        <!-- EDITAR: Reemplaza VIDEO_ID con el ID del video de YouTube que desees
+             Ejemplo: si la URL es https://www.youtube.com/watch?v=dQw4w9WgXcQ
+             entonces VIDEO_ID = dQw4w9WgXcQ
+             El src quedaría: https://www.youtube.com/embed/dQw4w9WgXcQ -->
+        <iframe
+          id="yt-iframe"
+          src="https://www.youtube.com/embed/QbBy20GPlqc?rel=0&modestbranding=1"
+          title="Video sobre Teoría General de Sistemas"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          style="display:none;">
+        </iframe>
+      </div>
+      <!-- EDITAR: Descripción del video -->
+      <p class="video-caption">
+        <i class="fas fa-info-circle"></i>
+        <strong>Fuente sugerida:</strong> Busca en YouTube "Teoría General de Sistemas Bertalanffy" para encontrar recursos de alta calidad. Reemplaza <code>VIDEO_ID</code> en el código fuente con el identificador del video elegido.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN JUEGOS
+  ============================================================ -->
+  <section id="juegos" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Aprendizaje Activo</span>
+        <h2>Juegos Interactivos</h2>
+        <p>Refuerza los conceptos aprendidos a través de actividades lúdicas diseñadas para consolidar tu comprensión.</p>
+      </div>
+
+      <!-- ==========================================
+           JUEGO 1: EMPAREJAR CONCEPTOS (DRAG & DROP)
+      ========================================== -->
+      <div class="game-block card" id="game1">
+        <div class="game-header">
+          <div class="game-badge">Juego 1</div>
+          <h3><i class="fas fa-arrows-alt"></i> Emparejar Conceptos</h3>
+          <p>Arrastra cada término hacia su definición correspondiente. ¡Completa todos los pares para ver tu resultado!</p>
+        </div>
+
+        <div class="drag-game-area">
+          <!-- Columna de términos arrastrables -->
+          <div class="drag-terms-col">
+            <h4>Términos</h4>
+            <!-- EDITAR: Los términos deben coincidir con los data-pair de las definiciones -->
+            <div class="drag-term" draggable="true" data-term="Sistema">Sistema</div>
+            <div class="drag-term" draggable="true" data-term="Entropía">Entropía</div>
+            <div class="drag-term" draggable="true" data-term="Homeostasis">Homeostasis</div>
+            <div class="drag-term" draggable="true" data-term="Sinergia">Sinergia</div>
+            <div class="drag-term" draggable="true" data-term="Retroalimentación">Retroalimentación</div>
+            <div class="drag-term" draggable="true" data-term="Emergencia">Emergencia</div>
+          </div>
+
+          <!-- Columna de definiciones (zonas de drop) -->
+          <div class="drag-defs-col">
+            <h4>Definiciones</h4>
+            <!-- EDITAR: El data-pair debe corresponder al data-term del término correcto
+                 Modifica el texto de las definiciones según tus necesidades -->
+            <div class="drag-def drop-zone" data-pair="Sistema">
+              <span class="drop-placeholder">Arrastra aquí</span>
+              <p>Conjunto de elementos interrelacionados que trabajan hacia un objetivo común.</p>
+            </div>
+            <div class="drag-def drop-zone" data-pair="Entropía">
+              <span class="drop-placeholder">Arrastra aquí</span>
+              <p>Tendencia al desorden, degradación y pérdida de organización en un sistema.</p>
+            </div>
+            <div class="drag-def drop-zone" data-pair="Homeostasis">
+              <span class="drop-placeholder">Arrastra aquí</span>
+              <p>Capacidad del sistema para mantener el equilibrio dinámico ante perturbaciones externas.</p>
+            </div>
+            <div class="drag-def drop-zone" data-pair="Sinergia">
+              <span class="drop-placeholder">Arrastra aquí</span>
+              <p>El resultado del conjunto supera la suma de los aportes individuales de cada parte.</p>
+            </div>
+            <div class="drag-def drop-zone" data-pair="Retroalimentación">
+              <span class="drop-placeholder">Arrastra aquí</span>
+              <p>Mecanismo por el cual las salidas del sistema son usadas para ajustar sus entradas o procesos.</p>
+            </div>
+            <div class="drag-def drop-zone" data-pair="Emergencia">
+              <span class="drop-placeholder">Arrastra aquí</span>
+              <p>Propiedades del sistema total que no existen en ninguno de sus componentes por separado.</p>
+            </div>
+          </div>
+        </div><!-- /.drag-game-area -->
+
+        <div class="game-controls">
+          <button class="btn btn-secondary" id="check-drag-btn"><i class="fas fa-check"></i> Verificar</button>
+          <button class="btn btn-outline" id="reset-drag-btn"><i class="fas fa-redo"></i> Reiniciar</button>
+        </div>
+        <div class="game-result" id="drag-result"></div>
+      </div><!-- /#game1 -->
+
+      <!-- ==========================================
+           JUEGO 2: ADIVINA EL CONCEPTO
+      ========================================== -->
+      <div class="game-block card" id="game2">
+        <div class="game-header">
+          <div class="game-badge">Juego 2</div>
+          <h3><i class="fas fa-brain"></i> Adivina el Concepto</h3>
+          <p>Lee la definición y elige el concepto correcto. ¡Tienes 6 rondas para demostrar lo aprendido!</p>
+        </div>
+
+        <div class="guess-game-area">
+          <div class="guess-stats">
+            <span id="guess-round">Ronda: 1 / 6</span>
+            <span id="guess-score">Puntaje: 0</span>
+          </div>
+
+          <div class="guess-definition-box" id="guess-definition">
+            <!-- La definición se inserta dinámicamente por JS -->
+            Cargando definición...
+          </div>
+
+          <!-- EDITAR: Las opciones se generan automáticamente por JS según las rondas definidas en script.js -->
+          <div class="guess-options" id="guess-options">
+            <!-- Opciones generadas dinámicamente -->
+          </div>
+
+          <div class="guess-feedback" id="guess-feedback"></div>
+
+          <div class="game-controls">
+            <button class="btn btn-primary" id="next-round-btn" style="display:none;"><i class="fas fa-arrow-right"></i> Siguiente Ronda</button>
+            <button class="btn btn-secondary" id="restart-guess-btn" style="display:none;"><i class="fas fa-redo"></i> Reiniciar Juego</button>
+          </div>
+        </div>
+      </div><!-- /#game2 -->
+
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SECCIÓN QUIZ
+  ============================================================ -->
+  <section id="quiz" class="section bg-light">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Evaluación</span>
+        <h2>Quiz de Autoevaluación</h2>
+        <p>Pon a prueba tus conocimientos sobre la Teoría General de Sistemas. 5 preguntas, retroalimentación inmediata.</p>
+      </div>
+
+      <div class="quiz-container card" id="quiz-container">
+        <div class="quiz-progress-bar">
+          <div class="quiz-progress-fill" id="quiz-progress-fill"></div>
+        </div>
+        <p class="quiz-progress-label" id="quiz-progress-label">Pregunta 1 de 5</p>
+
+        <form id="quiz-form" novalidate>
+
+          <!-- EDITAR: Modifica las preguntas, opciones y respuestas correctas aquí
+               La respuesta correcta se marca con data-correct="true" en el input -->
+
+          <!-- Pregunta 1 -->
+          <div class="quiz-question" id="qq-1">
+            <p class="question-text"><span class="q-num">1.</span> Según la TGS, ¿cuál de los siguientes enunciados describe mejor el concepto de <em>sistema</em>?</p>
+            <div class="options-list">
+              <label class="option-label">
+                <input type="radio" name="q1" value="a" />
+                <span>Un conjunto de partes aisladas que coexisten en el mismo espacio.</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q1" value="b" data-correct="true" />
+                <span>Un conjunto de elementos interrelacionados que trabajan hacia un objetivo común.</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q1" value="c" />
+                <span>Una estructura jerárquica sin interacción entre sus componentes.</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q1" value="d" />
+                <span>Un modelo matemático de predicción de comportamientos.</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 2 -->
+          <div class="quiz-question" id="qq-2" style="display:none;">
+            <p class="question-text"><span class="q-num">2.</span> ¿Qué concepto describe la tendencia natural de los sistemas <em>cerrados</em> al desorden y la degradación?</p>
+            <div class="options-list">
+              <label class="option-label">
+                <input type="radio" name="q2" value="a" />
+                <span>Homeostasis</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q2" value="b" />
+                <span>Emergencia</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q2" value="c" data-correct="true" />
+                <span>Entropía</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q2" value="d" />
+                <span>Sinergia</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 3 -->
+          <div class="quiz-question" id="qq-3" style="display:none;">
+            <p class="question-text"><span class="q-num">3.</span> Un termostato que apaga la calefacción cuando la temperatura alcanza el nivel deseado es un ejemplo de:</p>
+            <div class="options-list">
+              <label class="option-label">
+                <input type="radio" name="q3" value="a" />
+                <span>Entropía positiva</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q3" value="b" data-correct="true" />
+                <span>Retroalimentación negativa (homeostasis)</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q3" value="c" />
+                <span>Sistema cerrado sin interacciones</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q3" value="d" />
+                <span>Propiedad emergente del sistema</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 4 -->
+          <div class="quiz-question" id="qq-4" style="display:none;">
+            <p class="question-text"><span class="q-num">4.</span> La <em>conciencia humana</em>, que surge de la interacción de millones de neuronas pero no existe en ninguna neurona individual, es el mejor ejemplo de:</p>
+            <div class="options-list">
+              <label class="option-label">
+                <input type="radio" name="q4" value="a" />
+                <span>Homeostasis neuronal</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q4" value="b" />
+                <span>Entropía biológica</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q4" value="c" />
+                <span>Sinergia química</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q4" value="d" data-correct="true" />
+                <span>Emergencia del sistema</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Pregunta 5 -->
+          <div class="quiz-question" id="qq-5" style="display:none;">
+            <p class="question-text"><span class="q-num">5.</span> Una empresa que recibe capital e insumos, los transforma y vende productos al mercado, recibiendo ingresos para continuar operando, ¿qué tipo de sistema es?</p>
+            <div class="options-list">
+              <label class="option-label">
+                <input type="radio" name="q5" value="a" />
+                <span>Sistema cerrado sin retroalimentación</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q5" value="b" />
+                <span>Sistema con alta entropía incontrolable</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q5" value="c" data-correct="true" />
+                <span>Sistema abierto con retroalimentación positiva y negativa</span>
+              </label>
+              <label class="option-label">
+                <input type="radio" name="q5" value="d" />
+                <span>Suprasistema sin subsistemas definidos</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="quiz-nav">
+            <button type="button" class="btn btn-outline" id="prev-q-btn" disabled><i class="fas fa-chevron-left"></i> Anterior</button>
+            <button type="button" class="btn btn-primary" id="next-q-btn">Siguiente <i class="fas fa-chevron-right"></i></button>
+            <button type="button" class="btn btn-success" id="submit-quiz-btn" style="display:none;"><i class="fas fa-paper-plane"></i> Enviar Quiz</button>
+          </div>
+        </form>
+
+        <!-- Resultado del Quiz -->
+        <div class="quiz-result" id="quiz-result" style="display:none;">
+          <div class="result-icon" id="result-icon"></div>
+          <h3 id="result-title"></h3>
+          <p id="result-score"></p>
+          <p id="result-feedback"></p>
+          <button class="btn btn-primary" id="retry-quiz-btn"><i class="fas fa-redo"></i> Intentar de nuevo</button>
+        </div>
+      </div><!-- /.quiz-container -->
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+  ============================================================ -->
+  <!-- EDITAR: Actualiza los datos del autor, asignatura y universidad -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <i class="fas fa-project-diagram"></i>
+        <strong>OVA – Teoría General de Sistemas</strong>
+      </div>
+      <div class="footer-info">
+        <p><i class="fas fa-user"></i> Autor: <strong>[Nombre del Docente]</strong></p>
+        <p><i class="fas fa-book"></i> Asignatura: <strong>Teoría General de Sistemas</strong></p>
+        <p><i class="fas fa-university"></i> <strong>Universidad Simón Bolívar – Cúcuta</strong></p>
+        <p><i class="fas fa-calendar"></i> Año: <strong>2025</strong></p>
+      </div>
+      <p class="footer-copy">© 2025 – Todos los derechos reservados. Desarrollado con fines académicos.</p>
+    </div>
+  </footer>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+</body>
+</html>
