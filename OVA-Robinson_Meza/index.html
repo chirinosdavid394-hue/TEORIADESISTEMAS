@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>OVA — Caos en los Sistemas | Unisimon Cúcuta</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ══════════ NAVBAR ══════════ -->
+<nav id="nav">
+  <a class="nav-logo" href="#inicio">
+    <div class="nav-icon">US</div>
+    <div class="nav-txt">Unisimon Cúcuta<small>Caos en los Sistemas</small></div>
+  </a>
+  <button class="hamburger" onclick="document.getElementById('navlinks').classList.toggle('open')" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navlinks">
+    <a href="#inicio">Inicio</a>
+    <a href="#contexto">Contexto</a>
+    <a href="#teoria">Teoría</a>
+    <a href="#ejemplos">Ejemplos</a>
+    <a href="#ejercicios">Ejercicios</a>
+    <a href="#juegos">Juegos</a>
+    <a href="#herramientas">Herramientas</a>
+    <a href="#glosario">Glosario</a>
+    <a href="#videos">Videos</a>
+    <a href="#quiz-sec">Quiz</a>
+    <a href="#caso">Caso</a>
+  </div>
+  <div class="nav-progress" id="nav-prog"></div>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section id="inicio">
+  <canvas id="hero-cv"></canvas>
+  <div class="hero-c">
+    <div class="hero-badge">Objeto Virtual de Aprendizaje</div>
+    <h1 class="hero-title">Caos en los<br><span>Sistemas</span></h1>
+    <p class="hero-sub">Explora el fascinante mundo donde el orden se convierte en impredecibilidad y pequeñas diferencias generan grandes cambios.</p>
+    <div class="hero-objs">
+      <span class="hero-obj">🎯 Sistemas dinámicos</span>
+      <span class="hero-obj">🦋 Efecto mariposa</span>
+      <span class="hero-obj">🌀 Atractores extraños</span>
+      <span class="hero-obj">📐 Fractales</span>
+    </div>
+    <a href="#contexto" class="hero-cta">Comenzar el aprendizaje →</a>
+    <div class="badges-row">
+      <div class="badge-item" id="badge-explorer"><span class="bi">🗺️</span> Explorador</div>
+      <div class="badge-item" id="badge-scientist"><span class="bi">🔬</span> Científico</div>
+      <div class="badge-item" id="badge-gamer"><span class="bi">🎮</span> Experimentador</div>
+      <div class="badge-item" id="badge-master"><span class="bi">🏆</span> Maestro del Caos</div>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-box"><div class="scroll-dot"></div></div></div>
+</section>
+
+<!-- ══════════ CONTEXTUALIZACIÓN ══════════ -->
+<div id="contexto" style="background:var(--bg)">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Contextualización</div>
+    <h2 class="sec-title">¿Qué es el caos?</h2>
+    <p class="sec-desc">El caos no es desorden aleatorio, es un comportamiento determinista altamente sensible a las condiciones iniciales.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Comprender el origen histórico y los fundamentos conceptuales de la teoría del caos, identificando sus características esenciales y campos de aplicación.</div>
+  <div class="ctx-grid">
+    <div class="card">
+      <div class="card-hd"><div class="ico">📜</div>Historia del caos</div>
+      <div class="card-bd">
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1890 — Henri Poincaré</div><div class="tl-tx">Descubrió comportamiento impredecible en el problema de tres cuerpos, sentando las bases matemáticas del caos.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1963 — Edward Lorenz</div><div class="tl-tx">Modelando el clima, descubrió que cambios mínimos en condiciones iniciales producen resultados radicalmente distintos: el "efecto mariposa".</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1975 — Li &amp; Yorke</div><div class="tl-tx">Acuñaron el término "caos" en matemáticas. Demostraron que periodos de cualquier orden implican caos.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1975 — Mandelbrot</div><div class="tl-tx">Desarrolló la geometría fractal, revelando la estructura oculta del caos: autosimilaridad en todas las escalas.</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-yr">1987 — James Gleick</div><div class="tl-tx">Publicó "Caos: la creación de una ciencia", popularizando la teoría del caos a nivel global.</div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div class="ctx-hl">
+        <div class="hl-q">"¿Podría el aleteo de una mariposa en Brasil provocar un tornado en Texas?"</div>
+        <div class="hl-a">— Edward Lorenz, conferencia de 1972</div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="ico">🌍</div>Campos de aplicación</div>
+        <div class="card-bd">
+          <p style="font-size:12px;color:var(--muted);margin-bottom:10px">El caos está presente en múltiples disciplinas:</p>
+          <div class="pills">
+            <span class="pill">🌦️ Meteorología</span><span class="pill">💓 Cardiología</span>
+            <span class="pill go">📈 Economía</span><span class="pill bl">⚛️ Física</span>
+            <span class="pill">🧬 Biología</span><span class="pill go">🔌 Ing. eléctrica</span>
+            <span class="pill bl">🧪 Química</span><span class="pill">🌊 Hidráulica</span>
+            <span class="pill go">🚗 Transporte</span><span class="pill bl">🦠 Epidemiología</span>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-hd"><div class="ico">⚡</div>Características del caos</div>
+        <div class="card-bd">
+          <ul style="font-size:12px;color:var(--muted);padding-left:16px;line-height:2.1">
+            <li>Sistema <strong>determinista</strong> (no aleatorio)</li>
+            <li><strong>Sensibilidad extrema</strong> a condiciones iniciales (SDIC)</li>
+            <li>Comportamiento <strong>aperiódico</strong> a largo plazo</li>
+            <li>Existencia de <strong>atractores extraños</strong></li>
+            <li>Estructura <strong>fractal</strong> en el espacio de fase</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ TEORÍA ══════════ -->
+<div id="teoria" style="background:#fff">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Teoría</div>
+    <h2 class="sec-title">Fundamentos conceptuales</h2>
+    <p class="sec-desc">Explora los conceptos matemáticos y físicos que sustentan la teoría del caos.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Dominar los conceptos clave: sistemas dinámicos, efecto mariposa, atractores, mapa logístico, fractales y exponentes de Lyapunov.</div>
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showTab('t1',this)">Sistemas dinámicos</button>
+    <button class="tab-btn" onclick="showTab('t2',this)">Efecto mariposa</button>
+    <button class="tab-btn" onclick="showTab('t3',this)">Atractor de Lorenz</button>
+    <button class="tab-btn" onclick="showTab('t4',this)">Mapa logístico</button>
+    <button class="tab-btn" onclick="showTab('t5',this)">Fractales</button>
+    <button class="tab-btn" onclick="showTab('t6',this)">Exp. de Lyapunov</button>
+  </div>
+  <div id="t1" class="tab-c active"><div class="th-card">
+    <h3>Sistemas Dinámicos</h3>
+    <p>Un <strong>sistema dinámico</strong> es un modelo matemático que describe cómo evoluciona el estado de un sistema a lo largo del tiempo. Se caracterizan por su <em>espacio de fase</em>, donde cada punto representa una configuración posible del sistema.</p>
+    <p>Los sistemas pueden ser <strong>lineales</strong> (proporcionalidad entre causa y efecto) o <strong>no lineales</strong> (fuente de comportamiento caótico).</p>
+    <div class="formula">dx/dt = f(x, t)  →  Sistema continuo<br>x_{n+1} = f(x_n) →  Sistema discreto</div>
+    <p>Para que un sistema exhiba caos debe ser <strong>no lineal</strong>, tener al menos <strong>3 variables de estado</strong> y poseer retroalimentación interna.</p>
+    <div class="pills"><span class="pill">Sistema lineal</span><span class="pill go">Sistema no lineal</span><span class="pill bl">Espacio de fase</span><span class="pill">Órbita</span><span class="pill bl">Punto fijo</span><span class="pill go">Ciclo límite</span></div>
+  </div></div>
+  <div id="t2" class="tab-c"><div class="th-card">
+    <h3>Efecto Mariposa (SDIC)</h3>
+    <p>La <strong>Sensibilidad Dependiente a las Condiciones Iniciales (SDIC)</strong> establece que dos trayectorias que parten de condiciones iniciales infinitesimalmente cercanas divergen exponencialmente, haciendo imposible la predicción a largo plazo.</p>
+    <div class="formula">|δZ(t)| ≈ e^(λt) · |δZ₀|</div>
+    <p>Lorenz descubrió esto en 1961 al redondear 0.506127 a 0.506 —diferencia de 1 en 10 000— generando resultados completamente distintos.</p>
+    <div class="pills"><span class="pill go">λ &gt; 0 → Caótico</span><span class="pill">λ = 0 → Límite</span><span class="pill bl">λ &lt; 0 → Estable</span></div>
+  </div></div>
+  <div id="t3" class="tab-c"><div class="th-card">
+    <h3>Atractor de Lorenz</h3>
+    <p>Propuesto en 1963 para modelar la convección atmosférica. Las trayectorias giran alrededor de dos "alas" sin repetirse jamás, formando una estructura fractal (D ≈ 2.06).</p>
+    <div class="formula">dx/dt = σ(y − x)<br>dy/dt = x(ρ − z) − y<br>dz/dt = xy − βz</div>
+    <p>Parámetros clásicos: <strong>σ=10, ρ=28, β=8/3</strong></p>
+    <canvas id="lorenz-cv"></canvas>
+    <p style="margin-top:8px;font-size:11px;color:var(--muted);text-align:center">Atractor de Lorenz en tiempo real</p>
+  </div></div>
+  <div id="t4" class="tab-c"><div class="th-card">
+    <h3>Mapa Logístico</h3>
+    <p>Modelo de crecimiento poblacional con recursos limitados. A pesar de su simplicidad, exhibe la ruta completa al caos por duplicación de período (Feigenbaum).</p>
+    <div class="formula">x_{n+1} = r · x_n · (1 − x_n)</div>
+    <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2;margin:12px 0">
+      <li><strong>r &lt; 1:</strong> Extinción</li><li><strong>1 ≤ r ≤ 3:</strong> Punto fijo estable</li>
+      <li><strong>3 &lt; r ≤ 3.57:</strong> Bifurcaciones (ciclos 2, 4, 8…)</li><li><strong>r &gt; 3.57:</strong> Caos</li>
+    </ul>
+    <div class="pills"><span class="pill">r=2.5 → fijo</span><span class="pill go">r=3.2 → ciclo-2</span><span class="pill">r=3.5 → ciclo-4</span><span class="pill bl">r=3.9 → caos</span></div>
+  </div></div>
+  <div id="t5" class="tab-c"><div class="th-card">
+    <h3>Fractales</h3>
+    <p>Estructuras con <strong>autosimilaridad</strong> a diferentes escalas y dimensión no entera. Son la "firma visual" del caos en el espacio de fase.</p>
+    <div class="formula">D = log(N) / log(1/r)</div>
+    <ul style="font-size:13px;color:var(--muted);padding-left:16px;line-height:2;margin:10px 0">
+      <li>Conjunto de Cantor: D ≈ 0.631</li><li>Copo de Koch: D ≈ 1.261</li>
+      <li>Mandelbrot: D = 2</li><li>Atractor de Lorenz: D ≈ 2.06</li>
+    </ul>
+    <div class="pills"><span class="pill">Autosimilaridad</span><span class="pill go">Dimensión no entera</span><span class="pill bl">Mandelbrot</span><span class="pill">Julia sets</span></div>
+  </div></div>
+  <div id="t6" class="tab-c"><div class="th-card">
+    <h3>Exponente de Lyapunov</h3>
+    <p>Cuantifica la tasa de separación exponencial de trayectorias cercanas. Es la medida matemática del caos.</p>
+    <div class="formula">λ = lim_{t→∞} (1/t) · ln|δx(t)/δx(0)|</div>
+    <p>Para el mapa logístico: <code style="background:#f4f8f4;padding:2px 6px;border-radius:4px;font-size:13px">λ = (1/N)·Σ ln|r(1−2xₙ)|</code></p>
+    <p style="margin-top:10px"><strong>Horizonte de predicción:</strong></p>
+    <div class="formula">T = (1/λ) · ln(δ_max / δ₀)</div>
+    <div class="pills"><span class="pill go">λ &gt; 0 → Caos</span><span class="pill bl">λ = 0 → Bifurcación</span><span class="pill">λ &lt; 0 → Estable</span></div>
+  </div></div>
+</div>
+</div>
+
+<!-- ══════════ EJEMPLOS ══════════ -->
+<div id="ejemplos" style="background:var(--bg)">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Ejemplos prácticos</div>
+    <h2 class="sec-title">El caos en el mundo real</h2>
+    <p class="sec-desc">Aplicaciones concretas de la teoría del caos en ciencia, tecnología y naturaleza.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Reconocer aplicaciones de la teoría del caos en distintos campos científicos y cotidianos.</div>
+  <div class="ex-grid">
+    <div class="ex-card">
+      <div class="ex-img" style="background:linear-gradient(135deg,#0a2e2e,#0d4a6e)"><canvas id="cv-weather" width="400" height="130"></canvas></div>
+      <div class="ex-bd"><div class="ex-title">Sistema meteorológico</div><div class="ex-text">Las ecuaciones de Lorenz modelan la convección atmosférica. Impredecible más allá de ~2 semanas. λ ≈ 0.35 día⁻¹.</div><span class="ex-tag">Meteorología</span></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-img" style="background:linear-gradient(135deg,#2e0a0a,#6e1a1a)"><canvas id="cv-heart" width="400" height="130"></canvas></div>
+      <div class="ex-bd"><div class="ex-title">Ritmo cardíaco</div><div class="ex-text">El corazón sano exhibe HRV caótica. La pérdida de esta variabilidad predice enfermedades cardiovasculares graves.</div><span class="ex-tag">Biomedicina</span></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-img" style="background:linear-gradient(135deg,#1a2e0a,#2a5e10)"><canvas id="cv-pop" width="400" height="130"></canvas></div>
+      <div class="ex-bd"><div class="ex-title">Dinámica de poblaciones</div><div class="ex-text">El modelo Lotka-Volterra puede exhibir caos. Poblaciones de lince y liebre muestran oscilaciones caóticas en la naturaleza.</div><span class="ex-tag">Ecología</span></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-img" style="background:linear-gradient(135deg,#0a0a2e,#1a1a6e)"><canvas id="cv-mkt" width="400" height="130"></canvas></div>
+      <div class="ex-bd"><div class="ex-title">Mercados financieros</div><div class="ex-text">Alta sensibilidad a noticias, autosimilaridad fractal en gráficas y exponentes de Lyapunov positivos.</div><span class="ex-tag">Economía</span></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-img" style="background:linear-gradient(135deg,#2e200a,#6e4a10)"><div class="ex-icon">🚗</div></div>
+      <div class="ex-bd"><div class="ex-title">Tráfico vehicular</div><div class="ex-text">El flujo vehicular pasa de libre a congestionado caóticamente. Un frenazo se amplifica generando atascos kilómetros atrás sin causa aparente.</div><span class="ex-tag">Ing. transporte</span></div>
+    </div>
+    <div class="ex-card">
+      <div class="ex-img" style="background:linear-gradient(135deg,#2e0a1a,#6e101a)"><div class="ex-icon">🦠</div></div>
+      <div class="ex-bd"><div class="ex-title">Propagación de epidemias</div><div class="ex-text">Modelos SIR no lineales pueden exhibir caos para ciertos parámetros, dificultando predecir la evolución exacta de brotes.</div><span class="ex-tag">Epidemiología</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ EJERCICIOS ══════════ -->
+<div id="ejercicios" style="background:#fff">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Ejercicios</div>
+    <h2 class="sec-title">Practica lo aprendido</h2>
+    <p class="sec-desc">Resuelve los ejercicios para afianzar tu comprensión de los sistemas caóticos.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Aplicar los conceptos teóricos mediante cálculos y clasificaciones prácticas.</div>
+
+  <!-- EJ 1 -->
+  <div class="exercise open">
+    <div class="ex-hd" onclick="toggleEx(this)">
+      <h4><div class="ex-num">1</div>Iteraciones del mapa logístico</h4><span>▲</span>
+    </div>
+    <div class="ex-body">
+      <p style="font-size:13px;margin-bottom:12px"><strong>Enunciado:</strong> Dado x_{n+1} = r·xₙ·(1−xₙ), calcula las primeras iteraciones e identifica el comportamiento.</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:10px">
+        <div><label style="font-size:11px;font-weight:600;color:var(--muted)">Parámetro r (0–4)</label><input type="number" id="e1r" class="ex-input" step="0.01" min="0" max="4" value="3.9"/></div>
+        <div><label style="font-size:11px;font-weight:600;color:var(--muted)">Condición inicial x₀</label><input type="number" id="e1x0" class="ex-input" step="0.001" min="0" max="1" value="0.5"/></div>
+        <div><label style="font-size:11px;font-weight:600;color:var(--muted)">Iteraciones</label><input type="number" id="e1n" class="ex-input" min="5" max="100" value="20"/></div>
+      </div>
+      <button class="btn btn-g" onclick="calcEx1()">Calcular iteraciones</button>
+      <div class="log-out" id="e1-out"></div>
+      <canvas id="e1-cv" height="160" style="width:100%;border-radius:var(--r);background:#f8fdf9;margin-top:10px;display:none"></canvas>
+      <div class="ex-result" id="e1-res"></div>
+    </div>
+  </div>
+
+  <!-- EJ 2 -->
+  <div class="exercise">
+    <div class="ex-hd" onclick="toggleEx(this)">
+      <h4><div class="ex-num">2</div>Clasificación: ¿caótico o no?</h4><span>▼</span>
+    </div>
+    <div class="ex-body">
+      <p style="font-size:13px;margin-bottom:14px"><strong>Instrucciones:</strong> Identifica si cada sistema exhibe comportamiento caótico.</p>
+      <div id="classify-wrap">
+        <div class="classify-row"><p>Sistema A: Péndulo simple de pequeñas oscilaciones</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-g" style="font-size:11px;padding:7px 14px" onclick="classify('A',false)">❌ No caótico</button>
+            <button class="btn btn-go" style="font-size:11px;padding:7px 14px" onclick="classify('A',true)">🌀 Caótico</button>
+          </div><div class="classify-fb" id="fb-A"></div>
+        </div>
+        <div class="classify-row"><p>Sistema B: Péndulo doble con gran amplitud</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-g" style="font-size:11px;padding:7px 14px" onclick="classify('B',false)">❌ No caótico</button>
+            <button class="btn btn-go" style="font-size:11px;padding:7px 14px" onclick="classify('B',true)">🌀 Caótico</button>
+          </div><div class="classify-fb" id="fb-B"></div>
+        </div>
+        <div class="classify-row"><p>Sistema C: Crecimiento exponencial sin restricciones</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-g" style="font-size:11px;padding:7px 14px" onclick="classify('C',false)">❌ No caótico</button>
+            <button class="btn btn-go" style="font-size:11px;padding:7px 14px" onclick="classify('C',true)">🌀 Caótico</button>
+          </div><div class="classify-fb" id="fb-C"></div>
+        </div>
+        <div class="classify-row"><p>Sistema D: Circuito eléctrico de Chua</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-g" style="font-size:11px;padding:7px 14px" onclick="classify('D',false)">❌ No caótico</button>
+            <button class="btn btn-go" style="font-size:11px;padding:7px 14px" onclick="classify('D',true)">🌀 Caótico</button>
+          </div><div class="classify-fb" id="fb-D"></div>
+        </div>
+        <div class="classify-row"><p>Sistema E: Flujo laminar en tubería a baja velocidad</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-g" style="font-size:11px;padding:7px 14px" onclick="classify('E',false)">❌ No caótico</button>
+            <button class="btn btn-go" style="font-size:11px;padding:7px 14px" onclick="classify('E',true)">🌀 Caótico</button>
+          </div><div class="classify-fb" id="fb-E"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJ 3 -->
+  <div class="exercise">
+    <div class="ex-hd" onclick="toggleEx(this)">
+      <h4><div class="ex-num">3</div>Horizonte de predicción con Lyapunov</h4><span>▼</span>
+    </div>
+    <div class="ex-body">
+      <p style="font-size:13px;margin-bottom:10px"><strong>Problema:</strong> λ = 0.35 día⁻¹, δ₀ = 0.001, δ_max = 0.5. ¿Cuál es el horizonte T en días?</p>
+      <div class="formula">T = (1/λ) · ln(δ_max / δ₀)</div>
+      <input type="number" id="e3-ans" class="ex-input" placeholder="Tu respuesta en días…" step="0.01"/>
+      <button class="btn btn-g" onclick="checkEx3()">Verificar respuesta</button>
+      <div class="ex-result" id="e3-res"></div>
+    </div>
+  </div>
+
+  <!-- EJ 4 -->
+  <div class="exercise">
+    <div class="ex-hd" onclick="toggleEx(this)">
+      <h4><div class="ex-num">4</div>Cálculo de dimensión fractal</h4><span>▼</span>
+    </div>
+    <div class="ex-body">
+      <p style="font-size:13px;margin-bottom:10px"><strong>Problema:</strong> El copo de Koch se construye reemplazando el tercio central de cada segmento por dos lados de triángulo equilátero: N = 4 copias, r = 1/3. Calcula D con 3 decimales.</p>
+      <div class="formula">D = log(N) / log(1/r) = log(4) / log(3)</div>
+      <input type="number" id="e4-ans" class="ex-input" placeholder="D = ?" step="0.001"/>
+      <button class="btn btn-g" onclick="checkEx4()">Verificar respuesta</button>
+      <div class="ex-result" id="e4-res"></div>
+    </div>
+  </div>
+
+  <!-- EJ 5 -->
+  <div class="exercise">
+    <div class="ex-hd" onclick="toggleEx(this)">
+      <h4><div class="ex-num">5</div>Exponente de Lyapunov numérico</h4><span>▼</span>
+    </div>
+    <div class="ex-body">
+      <p style="font-size:13px;margin-bottom:10px"><strong>Instrucción:</strong> Ingresa r y el número de iteraciones para calcular λ numéricamente. Experimenta con r = 2.5, 3.2 y 3.9.</p>
+      <div class="formula">λ = (1/N) · Σ ln|r · (1 − 2·xₙ)|</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div><label style="font-size:11px;font-weight:600;color:var(--muted)">Parámetro r (0–4)</label><input type="number" id="e5r" class="ex-input" step="0.01" min="0" max="4" value="3.9"/></div>
+        <div><label style="font-size:11px;font-weight:600;color:var(--muted)">Iteraciones (100–10000)</label><input type="number" id="e5n" class="ex-input" min="100" max="10000" value="1000"/></div>
+      </div>
+      <button class="btn btn-g" onclick="calcEx5()">Calcular exponente</button>
+      <div class="log-out" id="e5-out"></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ JUEGOS ══════════ -->
+<div id="juegos" style="background:var(--bg)">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Juegos interactivos</div>
+    <h2 class="sec-title">Aprende jugando</h2>
+    <p class="sec-desc">Experimenta con sistemas caóticos directamente y observa sus propiedades en tiempo real.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Experimentar con sistemas caóticos directamente, observando sus propiedades en tiempo real mediante simulaciones interactivas.</div>
+  <div class="games-grid">
+
+    <!-- JUEGO 1: Efecto mariposa con mapa logístico -->
+    <div class="game-wrap">
+      <div class="game-bar">
+        <div class="game-n">1</div>
+        <div><h3>El efecto mariposa</h3><p>Dos trayectorias del mapa logístico (r=3.95) parten casi idénticas y divergen exponencialmente</p></div>
+      </div>
+      <div class="game-area">
+        <div class="g-controls">
+          <div class="ctrl-grp">
+            <div class="ctrl-lbl">Diferencia inicial (Δx₀)</div>
+            <div class="ctrl-row">
+              <input type="range" id="g1-delta" min="-5" max="-1" step="0.5" value="-3" style="width:140px" oninput="g1UpdateDelta()"/>
+              <span class="ctrl-val" id="g1-delta-val">0.001</span>
+            </div>
+          </div>
+          <div class="ctrl-grp">
+            <div class="ctrl-lbl">Velocidad</div>
+            <div class="ctrl-row"><input type="range" id="g1-speed" min="1" max="10" value="3" style="width:100px"/></div>
+          </div>
+          <button class="btn btn-g" onclick="g1Reset()">↺ Reiniciar</button>
+          <button class="btn btn-go" id="g1-pause-btn" onclick="g1Toggle()">⏸ Pausar</button>
+        </div>
+        <canvas id="butterfly-cv" class="game-cv"></canvas>
+        <div class="game-info">
+          <strong style="color:#6be89b">● Trayectoria 1</strong> x₀=0.500 &nbsp;|&nbsp;
+          <strong style="color:#ffa915">● Trayectoria 2</strong> x₀=0.500+Δ &nbsp;|&nbsp;
+          <strong>Divergencia:</strong> <span id="g1-div">0.000000</span> &nbsp;|&nbsp;
+          <strong>Iteración:</strong> <span id="g1-iter">0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- JUEGO 2: Bifurcación -->
+    <div class="game-wrap">
+      <div class="game-bar">
+        <div class="game-n">2</div>
+        <div><h3>Explorador del mapa logístico</h3><p>Mueve r y observa el diagrama de bifurcación en tiempo real</p></div>
+      </div>
+      <div class="game-area">
+        <div class="g-controls">
+          <div class="ctrl-grp">
+            <div class="ctrl-lbl">Parámetro r (0–4)</div>
+            <div class="ctrl-row">
+              <input type="range" id="g2-r" min="0" max="400" value="280" style="width:220px" oninput="g2Update()"/>
+              <span class="ctrl-val" id="g2-r-val">r=2.80</span>
+            </div>
+          </div>
+          <button class="btn btn-g" onclick="g2DrawFull()">Diagrama completo</button>
+        </div>
+        <canvas id="bifurcation-cv" class="game-cv"></canvas>
+        <div class="game-info"><strong>Comportamiento:</strong> <span id="g2-behavior">Punto fijo estable</span></div>
+      </div>
+    </div>
+
+    <!-- JUEGO 3: Péndulo doble -->
+    <div class="game-wrap">
+      <div class="game-bar">
+        <div class="game-n">3</div>
+        <div><h3>Péndulo doble caótico</h3><p>Ajusta el ángulo inicial y observa cómo emerge el caos</p></div>
+      </div>
+      <div class="game-area">
+        <div class="g-controls">
+          <div class="ctrl-grp">
+            <div class="ctrl-lbl">Ángulo inicial θ₁</div>
+            <div class="ctrl-row">
+              <input type="range" id="g3-angle" min="10" max="170" value="120" style="width:150px" oninput="g3UpdateAngle()"/>
+              <span class="ctrl-val" id="g3-angle-val">120°</span>
+            </div>
+          </div>
+          <button class="btn btn-g" onclick="g3Reset()">↺ Reiniciar</button>
+          <button class="btn btn-go" id="g3-pause-btn" onclick="g3Toggle()">⏸ Pausar</button>
+          <label style="font-size:11px;display:flex;align-items:center;gap:5px;cursor:pointer">
+            <input type="checkbox" id="g3-trace" checked/> Traza
+          </label>
+        </div>
+        <canvas id="pendulum-cv" class="game-cv"></canvas>
+        <div class="game-info">
+          <strong>Energía:</strong> <span id="g3-energy">—</span> &nbsp;|&nbsp;
+          <strong>Tiempo:</strong> <span id="g3-time">0.0 s</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ══════════ HERRAMIENTAS EXTERNAS ══════════ -->
+<div id="herramientas" style="background:#fff">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Herramientas externas</div>
+    <h2 class="sec-title">Simuladores y apps</h2>
+    <p class="sec-desc">Espacio para integrar simulaciones de terceros — PhET, GeoGebra, Desmos u otras plataformas.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="embed-grid">
+    <!-- SIMULADOR 1: PhET Péndulo -->
+    <div class="embed-slot">
+      <div class="embed-bar">
+        <h4>🔬 Péndulo Lab — PhET Colorado</h4>
+        <span class="embed-badge">Activo</span>
+      </div>
+      <div class="embed-body">
+        <iframe
+          src="https://phet.colorado.edu/sims/html/pendulum-lab/1.0.15/pendulum-lab_es.html"
+          allowfullscreen
+          allow="fullscreen"
+          loading="lazy"
+          title="PhET Péndulo Lab">
+        </iframe>
+      </div>
+      <div class="embed-note"><strong>PhET Colorado:</strong> Experimenta con péndulos simples y dobles, ajusta longitud, masa y gravedad. Observa el paso a comportamiento caótico.</div>
+    </div>
+
+    <!-- SIMULADOR 2: GeoGebra Lorenz -->
+    <div class="embed-slot">
+      <div class="embed-bar">
+        <h4>🌀 Atractor de Lorenz — GeoGebra</h4>
+        <span class="embed-badge">Activo</span>
+      </div>
+      <div class="embed-body">
+        <iframe
+          src="https://www.geogebra.org/material/iframe/id/JGGV5b5A/width/600/height/400/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false"
+          allowfullscreen
+          allow="fullscreen"
+          loading="lazy"
+          title="GeoGebra Lorenz">
+        </iframe>
+      </div>
+      <div class="embed-note"><strong>GeoGebra:</strong> Visualización interactiva del atractor de Lorenz en 3D. Ajusta los parámetros σ, ρ y β para explorar el comportamiento caótico.</div>
+    </div>
+
+    <!-- SIMULADOR 3: Péndulo doble SimuFísica — ancho completo -->
+    <div class="embed-slot" style="grid-column:1/-1">
+      <div class="embed-bar">
+        <h4>🔄 Péndulo Doble — SimuFísica</h4>
+        <span class="embed-badge">Activo</span>
+      </div>
+      <div class="embed-body" style="min-height:480px">
+        <iframe
+          src="https://simufisica.com/es/pendulo-doble/?modo=ppt&Lx=500&Ly=450"
+          allowfullscreen
+          allow="fullscreen"
+          loading="lazy"
+          style="height:480px"
+          title="SimuFísica Péndulo Doble">
+        </iframe>
+      </div>
+      <div class="embed-note"><strong>SimuFísica:</strong> Simulación completa del péndulo doble caótico. Ajusta ángulos, longitudes y masas. Observa cómo la mínima variación produce trayectorias completamente distintas.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ GLOSARIO ══════════ -->
+<div id="glosario" style="background:var(--bg)">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Glosario</div>
+    <h2 class="sec-title">Términos clave</h2>
+    <p class="sec-desc">Busca y consulta los conceptos fundamentales de la teoría del caos.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="card">
+    <div class="card-hd"><div class="ico">📖</div>Glosario interactivo</div>
+    <div class="card-bd">
+      <input type="text" class="gloss-search" id="gloss-input" placeholder="Buscar término…" oninput="filterGloss()" />
+      <div id="gloss-list">
+        <div class="gloss-item"><strong>Atractor</strong><p>Conjunto de estados hacia los cuales un sistema dinámico evoluciona con el tiempo, independientemente de las condiciones iniciales.</p></div>
+        <div class="gloss-item"><strong>Atractor extraño</strong><p>Atractor con estructura fractal asociado a comportamiento caótico. Las trayectorias son atraídas pero nunca se repiten exactamente.</p></div>
+        <div class="gloss-item"><strong>Bifurcación</strong><p>Cambio cualitativo en el comportamiento de un sistema dinámico cuando un parámetro cruza un valor crítico.</p></div>
+        <div class="gloss-item"><strong>Caos determinista</strong><p>Comportamiento aparentemente aleatorio generado por ecuaciones deterministas, caracterizado por sensibilidad a condiciones iniciales (SDIC).</p></div>
+        <div class="gloss-item"><strong>Ciclo límite</strong><p>Órbita periódica cerrada y aislada en el espacio de fase. Las trayectorias cercanas espiralan hacia ella.</p></div>
+        <div class="gloss-item"><strong>Condiciones iniciales</strong><p>Estado del sistema en t=0. En sistemas caóticos, pequeñas variaciones generan evoluciones radicalmente distintas.</p></div>
+        <div class="gloss-item"><strong>Dimensión fractal</strong><p>Número no entero que cuantifica la complejidad geométrica de un fractal. Se calcula con D = log(N)/log(1/r).</p></div>
+        <div class="gloss-item"><strong>Efecto mariposa</strong><p>Metáfora de la SDIC: perturbaciones mínimas en las condiciones iniciales pueden causar efectos enormes a largo plazo.</p></div>
+        <div class="gloss-item"><strong>Espacio de fase</strong><p>Espacio matemático donde cada punto representa un estado completo del sistema (posiciones y velocidades de todas las variables).</p></div>
+        <div class="gloss-item"><strong>Exponente de Lyapunov</strong><p>Medida cuantitativa de la tasa de separación exponencial de trayectorias cercanas. Si λ &gt; 0, el sistema es caótico.</p></div>
+        <div class="gloss-item"><strong>Fractal</strong><p>Estructura geométrica con autosimilaridad a diferentes escalas y dimensión no entera.</p></div>
+        <div class="gloss-item"><strong>Horizonte de predicción</strong><p>Tiempo máximo para el cual las predicciones son confiables: T = (1/λ)·ln(δ_max/δ₀).</p></div>
+        <div class="gloss-item"><strong>Mapa logístico</strong><p>Modelo discreto x_{n+1} = r·xₙ·(1−xₙ) que exhibe la ruta al caos por duplicación de período (Feigenbaum).</p></div>
+        <div class="gloss-item"><strong>No linealidad</strong><p>Propiedad de sistemas cuyas salidas no son proporcionales a las entradas. Condición necesaria (no suficiente) para el caos.</p></div>
+        <div class="gloss-item"><strong>SDIC</strong><p>Sensibilidad Dependiente a las Condiciones Iniciales. Característica definitoria del caos: trayectorias cercanas divergen exponencialmente.</p></div>
+        <div class="gloss-item"><strong>Sistema dinámico</strong><p>Modelo matemático que describe la evolución temporal del estado de un sistema mediante ecuaciones diferenciales o en diferencia.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ VIDEOS ══════════ -->
+<div id="videos" style="background:#fff">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Videos</div>
+    <h2 class="sec-title">Recursos audiovisuales</h2>
+    <p class="sec-desc">Videos seleccionados para complementar y profundizar el aprendizaje.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Complementar y profundizar el aprendizaje mediante recursos audiovisuales sobre la teoría del caos.</div>
+  <div class="vid-grid">
+    <div class="vid-card">
+      <div class="vid-embed"><iframe src="https://www.youtube.com/embed/fDek6cYijxI" title="Caos" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid-info"><div class="vid-title">Caos: El arte de predecir</div><div class="vid-desc">Introducción visual al caos determinista, el efecto mariposa y los sistemas dinámicos no lineales. (En español)</div></div>
+    </div>
+    <div class="vid-card">
+      <div class="vid-embed"><iframe src="https://www.youtube.com/embed/ovJcsL7vyrk" title="Lorenz" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid-info"><div class="vid-title">El atractor de Lorenz explicado</div><div class="vid-desc">Ecuaciones de Lorenz, su derivación y la interpretación física del atractor extraño.</div></div>
+    </div>
+    <div class="vid-card">
+      <div class="vid-embed"><iframe src="https://www.youtube.com/embed/ETrYE4MdoLQ" title="Fractales" allowfullscreen loading="lazy"></iframe></div>
+      <div class="vid-info"><div class="vid-title">Fractales, caos y la geometría de la naturaleza</div><div class="vid-desc">Conexión entre fractales, dimensión fractal y atractores extraños en sistemas caóticos.</div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ QUIZ ══════════ -->
+<div id="quiz-sec">
+<div style="padding:72px 24px">
+<div class="quiz-wrap fi">
+  <div class="sec-hd quiz-hd">
+    <div class="sec-tag">Evaluación</div>
+    <h2 class="sec-title">Quiz interactivo</h2>
+    <p class="sec-desc">Responde 10 preguntas para evaluar tu comprensión del tema.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="qcard">
+    <div class="q-prog-bar"><div class="q-prog-fill" id="q-prog"></div></div>
+    <div class="q-meta"><span>Pregunta <span id="q-num">1</span> de 10</span><span>Puntuación: <span id="q-score">0</span>/10</span></div>
+    <div class="q-text" id="q-text"></div>
+    <div class="q-opts" id="q-opts"></div>
+    <div class="q-fb" id="q-fb"></div>
+    <div class="q-nav"><button class="btn btn-go" id="q-next" onclick="nextQ()" style="display:none">Siguiente →</button></div>
+    <div class="q-result" id="q-result">
+      <div class="q-stars" id="q-stars"></div>
+      <div class="q-score" id="q-score-final">0/10</div>
+      <div class="q-score-lbl">Respuestas correctas</div>
+      <div class="q-msg" id="q-msg"></div>
+      <button class="btn btn-g" onclick="resetQuiz()" style="margin-right:8px">↺ Repetir</button>
+      <button class="btn btn-go" onclick="location.href='#inicio'">⬆ Inicio</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- ══════════ CASO INTEGRADOR ══════════ -->
+<div id="caso" style="background:var(--bg)">
+<div class="sec fi">
+  <div class="sec-hd">
+    <div class="sec-tag">Caso integrador</div>
+    <h2 class="sec-title">Proyecto final aplicado</h2>
+    <p class="sec-desc">Integra todos los conceptos analizando un sistema real completo.</p>
+    <div class="divider"></div>
+  </div>
+  <div class="objective"><strong>🎯 Objetivo:</strong> Integrar todos los conceptos: identificar caos, calcular parámetros y realizar predicciones sobre un sistema real.</div>
+  <div class="caso-card">
+    <h3>🌦️ Caso: Análisis de un modelo climático simplificado</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Eres investigador del clima. Utilizas el modelo de Lorenz para simular la convección atmosférica local. Tu tarea:</p>
+    <div class="caso-steps">
+      <div class="caso-step"><strong>Identifica el tipo de sistema:</strong> ¿Por qué el sistema de Lorenz es caótico? Señala las 3 condiciones (no linealidad, 3+ variables, retroalimentación).</div>
+      <div class="caso-step"><strong>Calcula el horizonte de predicción:</strong> Con λ = 0.9 día⁻¹, δ₀ = 0.0001, δ_max = 1.0 — ¿cuántos días puedes predecir confiablemente?</div>
+      <div class="caso-step"><strong>Analiza la dimensión fractal:</strong> El atractor tiene D ≈ 2.06. ¿Qué implica que sea mayor que 2 pero menor que 3?</div>
+      <div class="caso-step"><strong>Compara condiciones iniciales:</strong> Usa el Juego 1 con Δ = 0.001 y Δ = 0.1. ¿Cuántas iteraciones tarda cada una en divergir significativamente?</div>
+      <div class="caso-step"><strong>Reflexión:</strong> ¿Por qué los pronósticos meteorológicos son confiables a 3 días pero no a 3 semanas?</div>
+    </div>
+  </div>
+  <div class="caso-card">
+    <h3>📝 Verificación del punto 2</h3>
+    <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Escribe tu respuesta al horizonte de predicción (λ=0.9, δ₀=0.0001, δ_max=1.0) en días, 2 decimales:</p>
+    <div class="formula">T = (1/0.9) · ln(1.0/0.0001)</div>
+    <input type="number" id="caso-ans" class="ex-input" placeholder="Tu respuesta en días…" step="0.01"/>
+    <button class="btn btn-g" onclick="checkCaso()">Verificar cálculo</button>
+    <div class="ex-result" id="caso-res"></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════ REFERENCIAS ══════════ -->
+<div class="refs-sec">
+<div class="refs-wrap">
+  <div style="margin-bottom:22px">
+    <div class="sec-tag">Referencias</div>
+    <h2 class="sec-title" style="text-align:left;margin-top:8px">Bibliografía y fuentes</h2>
+    <div class="divider" style="margin:12px 0 0"></div>
+  </div>
+  <div class="ref-item">Gleick, J. (1987). <em>Chaos: Making a New Science</em>. Viking Penguin. ISBN 978-0-670-81178-4.</div>
+  <div class="ref-item">Lorenz, E. N. (1963). Deterministic nonperiodic flow. <em>Journal of the Atmospheric Sciences, 20</em>(2), 130–141. https://doi.org/10.1175/1520-0469(1963)020</div>
+  <div class="ref-item">Strogatz, S. H. (2015). <em>Nonlinear Dynamics and Chaos</em> (2.ª ed.). Westview Press. ISBN 978-0-8133-4910-7.</div>
+  <div class="ref-item">May, R. M. (1976). Simple mathematical models with very complicated dynamics. <em>Nature, 261</em>, 459–467. https://doi.org/10.1038/261459a0</div>
+  <div class="ref-item">Mandelbrot, B. B. (1982). <em>The Fractal Geometry of Nature</em>. W. H. Freeman. ISBN 978-0-7167-1186-5.</div>
+  <div class="ref-item">Li, T. Y., & Yorke, J. A. (1975). Period three implies chaos. <em>The American Mathematical Monthly, 82</em>(10), 985–992.</div>
+  <div class="ref-item">Ott, E. (2002). <em>Chaos in Dynamical Systems</em> (2.ª ed.). Cambridge University Press. ISBN 978-0-521-01084-9.</div>
+  <div class="ref-item">Peitgen, H. O., Jürgens, H., & Saupe, D. (2004). <em>Chaos and Fractals: New Frontiers of Science</em> (2.ª ed.). Springer. ISBN 978-0-387-20229-7.</div>
+</div>
+</div>
+
+<footer>
+  <p><strong>Universidad Simón Bolívar — Seccional Cúcuta</strong></p>
+  <p style="margin-top:5px">OVA: Caos en los Sistemas &nbsp;·&nbsp; Ingeniería &nbsp;·&nbsp; 2025</p>
+  <p style="margin-top:4px;font-size:11px;opacity:.55">Contenido con fines académicos y educativos. Diseño adaptado a la identidad visual institucional Unisimon.</p>
+</footer>
+
+<!-- ══════════════════════ JAVASCRIPT ══════════════════════ -->
+<script src="app.js"></script>
+</body>
+</html>
