@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OVA · Homeostasis & Equilibrio en Sistemas</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">OVA · Homeostasis</div>
+  <ul class="nav-links">
+    <li><a href="#contexto">Contexto</a></li>
+    <li><a href="#teoria">Teoría</a></li>
+    <li><a href="#ejemplos">Ejemplos</a></li>
+    <li><a href="#simulador">Simulador</a></li>
+    <li><a href="#juegos">Juegos</a></li>
+    <li><a href="#quiz">Quiz</a></li>
+  </ul>
+  <div class="nav-tag">GALEANO OMAÑA · Thomas Alejandro</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-badge">OBJETO VIRTUAL DE APRENDIZAJE · OVA</div>
+  <h1 class="hero-title fade-in">
+    <span class="t1">Homeostasis</span><br>
+    <span class="t2">&</span> <span class="t3">Equilibrio</span><br>
+    <span class="t2">en Sistemas</span>
+  </h1>
+  <p class="hero-subtitle fade-in-2">
+    Explora los mecanismos que permiten a los sistemas biológicos, físicos y tecnológicos mantener su estado interno estable frente a las perturbaciones del entorno.
+  </p>
+  <p class="hero-meta fade-in-3">
+    Autor: <span>Thomas Alejandro Galeano Omaña</span> &nbsp;·&nbsp; Área: <span>Sistemas & Cibernética</span>
+  </p>
+  <div class="hero-cta fade-in-4">
+    <a href="#contexto" class="btn-primary">Comenzar →</a>
+    <a href="#quiz" class="btn-secondary">Ir al Quiz</a>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- CONTEXTUALIZACIÓN -->
+<section id="contexto">
+  <div class="section-wrap">
+    <div class="section-label">01 · Contextualización</div>
+    <h2 class="section-title">¿Por qué importa el <em>equilibrio</em>?</h2>
+    <p class="section-body">
+      Vivimos rodeados de sistemas que luchan constantemente por mantener su estabilidad: desde la temperatura de tu cuerpo hasta la economía global, pasando por los servidores que alojan internet. La homeostasis y el equilibrio no son accidentes — son el resultado de mecanismos precisos de regulación que operan en múltiples escalas.
+    </p>
+    <div class="highlight-box">
+      <p>"La homeostasis es la propiedad de los sistemas que regula su entorno interno para mantener un estado estable y constante, permitiendo a los organismos y sistemas funcionar correctamente incluso cuando el entorno externo cambia." — Claude Bernard & Walter B. Cannon</p>
+    </div>
+    <p class="section-body">
+      El concepto fue introducido por el fisiólogo francés Claude Bernard en el siglo XIX y formalizado por Walter B. Cannon en 1926. Hoy, el principio trasciende la biología y se aplica en ingeniería de control, termodinámica, teoría de sistemas y cibernética.
+    </p>
+
+    <!-- Timeline -->
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">1865</div>
+          <div class="tl-ttl">Claude Bernard — "Milieu Intérieur"</div>
+          <div class="tl-desc">Propone que los organismos vivos mantienen un "medio interior" constante independiente del entorno externo, sentando las bases conceptuales de la homeostasis.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">1926</div>
+          <div class="tl-ttl">Walter B. Cannon — "Homeostasis"</div>
+          <div class="tl-desc">Acuña el término y describe los mecanismos de retroalimentación negativa que permiten a los mamíferos regular temperatura, glucosa y otros parámetros vitales.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">1948</div>
+          <div class="tl-ttl">Norbert Wiener — Cibernética</div>
+          <div class="tl-desc">Generaliza los principios de retroalimentación y control a sistemas mecánicos, eléctricos y sociales, estableciendo la cibernética como disciplina.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-dot"></div></div>
+        <div class="tl-content">
+          <div class="tl-year">Hoy</div>
+          <div class="tl-ttl">Aplicaciones Modernas</div>
+          <div class="tl-desc">Desde termostatos inteligentes hasta reguladores PID en industria, pasando por algoritmos homeostáticos en redes neuronales artificiales y sistemas de climatización de data centers.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- TEORÍA -->
+<section id="teoria">
+  <div class="section-wrap">
+    <div class="section-label">02 · Teoría Conceptual</div>
+    <h2 class="section-title">Parámetros de los <em>Sistemas</em></h2>
+    <p class="section-body">Un sistema homeostático posee componentes fundamentales que trabajan coordinadamente para mantener variables dentro de rangos aceptables. Estos son sus parámetros esenciales:</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🎯</div>
+        <div class="card-title">Punto de Ajuste (Set Point)</div>
+        <div class="card-text">Valor de referencia u objetivo que el sistema intenta mantener. Ej: 37 °C de temperatura corporal, 70-100 mg/dL de glucosa en sangre. Es el "blanco" del regulador.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📡</div>
+        <div class="card-title">Receptor / Sensor</div>
+        <div class="card-text">Detecta los cambios en el parámetro controlado y envía información al centro de control. Ej: termorreceptores de la piel, receptores de presión arterial.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🧠</div>
+        <div class="card-title">Centro de Control</div>
+        <div class="card-text">Procesa la señal del receptor, la compara con el set point y determina la respuesta apropiada. Ej: hipotálamo para temperatura, páncreas para glucosa.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚙️</div>
+        <div class="card-title">Efector</div>
+        <div class="card-text">Ejecuta la respuesta ordenada por el centro de control para devolver la variable al set point. Ej: músculos (escalofríos), glándulas sudoríparas, glándula tiroides.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🔄</div>
+        <div class="card-title">Retroalimentación Negativa</div>
+        <div class="card-text">Mecanismo más común. La respuesta generada se opone al estímulo original, devolviendo el sistema al equilibrio. Estabilizador por naturaleza. Ej: termostato.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <div class="card-title">Retroalimentación Positiva</div>
+        <div class="card-text">La respuesta amplifica el estímulo original. Menos común; usada en procesos que deben completarse rápidamente. Ej: contracciones del parto, coagulación sanguínea.</div>
+      </div>
+    </div>
+
+    <div style="margin-top:3rem;">
+      <p class="section-body">
+        <strong style="color:var(--text);">Tipos de Equilibrio en Sistemas</strong>
+      </p>
+    </div>
+    <div class="card-grid" style="margin-top:1rem;">
+      <div class="card">
+        <div class="card-icon">⚖️</div>
+        <div class="card-title">Equilibrio Estático</div>
+        <div class="card-text">El sistema permanece en reposo cuando no hay fuerzas netas actuando. Las variables no cambian con el tiempo. Ej: balanza en reposo, solución saturada.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌊</div>
+        <div class="card-title">Equilibrio Dinámico</div>
+        <div class="card-text">El sistema experimenta cambios continuos pero las variables macroscópicas permanecen estables. Ej: reacciones químicas reversibles, flujo sanguíneo constante.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🏔️</div>
+        <div class="card-title">Equilibrio Estable</div>
+        <div class="card-text">Ante una perturbación, el sistema tiende a volver a su estado original (retroalimentación negativa). Es el tipo homeostático por excelencia.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <div class="card-title">Equilibrio Inestable</div>
+        <div class="card-text">Una pequeña perturbación aleja al sistema de su estado de equilibrio de forma irreversible. Requiere retroalimentación positiva o no tiene mecanismos de retorno.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- EJEMPLOS -->
+<section id="ejemplos">
+  <div class="section-wrap">
+    <div class="section-label">03 · Ejemplos Prácticos</div>
+    <h2 class="section-title">La homeostasis en el <em>mundo real</em></h2>
+    <div class="example-tabs">
+      <button class="tab-btn active" onclick="showTab('bio')">🧬 Biológico</button>
+      <button class="tab-btn" onclick="showTab('tec')">🔧 Tecnológico</button>
+      <button class="tab-btn" onclick="showTab('eco')">🌍 Ecológico</button>
+    </div>
+
+    <div id="tab-bio" class="tab-content active">
+      <div class="example-card">
+        <div class="example-visual">🌡️</div>
+        <div class="example-info">
+          <h3>Termorregulación Humana</h3>
+          <p>El cuerpo humano mantiene una temperatura interna de aproximadamente 37 °C independientemente del entorno. Cuando la temperatura sube, el hipotálamo activa la sudoración y vasodilatación; cuando baja, activa los escalofríos y vasoconstricción.</p>
+          <ul class="param-list">
+            <li>Set Point: 36.5 – 37.5 °C</li>
+            <li>Sensor: Termorreceptores cutáneos y centrales</li>
+            <li>Control: Hipotálamo anterior/posterior</li>
+            <li>Efector: Glándulas sudoríparas, músculos, vasos</li>
+            <li>Feedback: Negativo (opone el cambio)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-tec" class="tab-content">
+      <div class="example-card">
+        <div class="example-visual">🏠</div>
+        <div class="example-info">
+          <h3>Termostato Inteligente</h3>
+          <p>Un termostato regula la temperatura de un ambiente mediante un bucle de retroalimentación negativa. El sensor mide la temperatura actual, el controlador la compara con el set point y activa/desactiva el sistema de climatización.</p>
+          <ul class="param-list">
+            <li>Set Point: Temperatura deseada (ej: 22 °C)</li>
+            <li>Sensor: Termistor o termopar</li>
+            <li>Control: Microprocesador / algoritmo PID</li>
+            <li>Efector: Compresor AC o calefactor</li>
+            <li>Feedback: Negativo — apaga cuando alcanza la meta</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div id="tab-eco" class="tab-content">
+      <div class="example-card">
+        <div class="example-visual">🦁</div>
+        <div class="example-info">
+          <h3>Dinámica Depredador-Presa</h3>
+          <p>En un ecosistema, las poblaciones de depredadores y presas se regulan mutuamente. Si las presas aumentan, los depredadores tienen más alimento y también aumentan; esto reduce las presas y luego los depredadores, manteniendo un equilibrio dinámico.</p>
+          <ul class="param-list">
+            <li>Set Point: Densidad poblacional de equilibrio</li>
+            <li>Sensor: Disponibilidad de alimento</li>
+            <li>Control: Tasas de natalidad/mortalidad</li>
+            <li>Efector: Población depredadora/presa</li>
+            <li>Feedback: Negativo cíclico (oscilaciones)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- SIMULADOR -->
+<section id="simulador">
+  <div class="section-wrap">
+    <div class="section-label">04 · Simulador Interactivo</div>
+    <h2 class="section-title">Simulador de <em>Homeostasis</em> Corporal</h2>
+    <p class="section-body">Observa cómo un organismo responde a perturbaciones externas e intenta restaurar el equilibrio. Aplica estrés al sistema y activa los mecanismos de recuperación.</p>
+
+    <div class="sim-wrap">
+      <div class="sim-header">
+        <div class="sim-title">📊 Monitor de Parámetros Vitales</div>
+        <div class="sim-status ok" id="sim-status">✓ HOMEOSTASIS ACTIVA</div>
+      </div>
+
+      <!-- Temperatura -->
+      <div class="param-row">
+        <div class="param-label">🌡️ Temperatura (°C)</div>
+        <div class="param-bar-wrap">
+          <div class="param-zone" id="zone-temp" style="left:40%;width:20%"></div>
+          <div class="param-bar" id="bar-temp" style="width:50%;background:var(--accent1)"></div>
+        </div>
+        <div class="param-val" id="val-temp">37.0 °C</div>
+      </div>
+      <!-- Glucosa -->
+      <div class="param-row">
+        <div class="param-label">🩸 Glucosa (mg/dL)</div>
+        <div class="param-bar-wrap">
+          <div class="param-zone" id="zone-glu" style="left:35%;width:30%"></div>
+          <div class="param-bar" id="bar-glu" style="width:50%;background:var(--accent3)"></div>
+        </div>
+        <div class="param-val" id="val-glu">90 mg/dL</div>
+      </div>
+      <!-- Presión arterial -->
+      <div class="param-row">
+        <div class="param-label">❤️ Presión Sistólica</div>
+        <div class="param-bar-wrap">
+          <div class="param-zone" id="zone-pres" style="left:30%;width:25%"></div>
+          <div class="param-bar" id="bar-pres" style="width:50%;background:var(--accent2)"></div>
+        </div>
+        <div class="param-val" id="val-pres">120 mmHg</div>
+      </div>
+      <!-- pH -->
+      <div class="param-row">
+        <div class="param-label">⚗️ pH Sanguíneo</div>
+        <div class="param-bar-wrap">
+          <div class="param-zone" id="zone-ph" style="left:42%;width:16%"></div>
+          <div class="param-bar" id="bar-ph" style="width:50%;background:var(--accent4)"></div>
+        </div>
+        <div class="param-val" id="val-ph">7.40</div>
+      </div>
+
+      <div class="sim-controls">
+        <button class="sim-btn sim-btn-stress" onclick="simStress('heat')">🔥 Golpe de Calor</button>
+        <button class="sim-btn sim-btn-stress" onclick="simStress('sugar')">🍬 Hiperglucemia</button>
+        <button class="sim-btn sim-btn-stress" onclick="simStress('hyper')">💨 Hipertensión</button>
+        <button class="sim-btn sim-btn-stress" onclick="simStress('acid')">⚗️ Acidosis</button>
+        <button class="sim-btn sim-btn-restore" onclick="simRestore()">🔄 Activar Homeostasis</button>
+        <button class="sim-btn sim-btn-reset" onclick="simReset()">↺ Reiniciar</button>
+      </div>
+      <div class="sim-log" id="sim-log">[ Sistema listo — Todos los parámetros en rango normal ]</div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- EJERCICIOS -->
+<section id="ejercicios">
+  <div class="section-wrap">
+    <div class="section-label">05 · Ejercicios Planteados</div>
+    <h2 class="section-title">Pon a prueba tu <em>comprensión</em></h2>
+    <p class="section-body">Responde cada ejercicio y recibe retroalimentación inmediata. Intenta razonar antes de seleccionar.</p>
+
+    <div class="ejercicio-list">
+      <!-- E1 -->
+      <div class="ejercicio">
+        <div class="ejercicio-num">EJERCICIO 01</div>
+        <div class="ejercicio-q">Un maratonista lleva 30 minutos corriendo bajo el sol. Su temperatura corporal comienza a subir. ¿Cuál componente del sistema homeostático DETECTA este cambio?</div>
+        <ul class="ejercicio-opts" id="e1">
+          <li onclick="checkEx('e1',this,0)">A) El hipotálamo posterior</li>
+          <li onclick="checkEx('e1',this,1)">B) Los termorreceptores periféricos y centrales</li>
+          <li onclick="checkEx('e1',this,0)">C) Las glándulas sudoríparas</li>
+          <li onclick="checkEx('e1',this,0)">D) Los músculos esqueléticos</li>
+        </ul>
+        <div class="ejercicio-fb fb-ok" id="fb-e1-ok">✓ Correcto. Los termorreceptores (periféricos en la piel y centrales en el hipotálamo) son los SENSORES que detectan el cambio de temperatura y envían señales al centro de control.</div>
+        <div class="ejercicio-fb fb-bad" id="fb-e1-bad">✗ Incorrecto. El hipotálamo es el CENTRO DE CONTROL, las glándulas sudoríparas y músculos son EFECTORES. La detección la realizan los termorreceptores.</div>
+      </div>
+
+      <!-- E2 -->
+      <div class="ejercicio">
+        <div class="ejercicio-num">EJERCICIO 02</div>
+        <div class="ejercicio-q">¿Cuál de los siguientes ejemplos ilustra retroalimentación POSITIVA (no negativa)?</div>
+        <ul class="ejercicio-opts" id="e2">
+          <li onclick="checkEx('e2',this,0)">A) El termostato que apaga la calefacción al alcanzar 22 °C</li>
+          <li onclick="checkEx('e2',this,0)">B) La insulina que reduce la glucosa sanguínea tras una comida</li>
+          <li onclick="checkEx('e2',this,1)">C) Las contracciones uterinas que se intensifican durante el parto</li>
+          <li onclick="checkEx('e2',this,0)">D) La vasoconstricción ante el frío para conservar calor</li>
+        </ul>
+        <div class="ejercicio-fb fb-ok" id="fb-e2-ok">✓ Correcto. El parto usa retroalimentación positiva: la oxitocina intensifica contracciones → el bebé presiona más el cuello uterino → más oxitocina, hasta completar el proceso.</div>
+        <div class="ejercicio-fb fb-bad" id="fb-e2-bad">✗ Incorrecto. Ese es un ejemplo de retroalimentación negativa (el efecto se opone al estímulo). La retroalimentación positiva amplifica el estímulo. El parto es el ejemplo clásico.</div>
+      </div>
+
+      <!-- E3 -->
+      <div class="ejercicio">
+        <div class="ejercicio-num">EJERCICIO 03</div>
+        <div class="ejercicio-q">Un ingeniero diseña un sistema de control de presión en una planta industrial. Define el valor objetivo en 150 PSI. ¿Cómo se denomina este valor en la teoría de sistemas homeostáticos?</div>
+        <ul class="ejercicio-opts" id="e3">
+          <li onclick="checkEx('e3',this,0)">A) Umbral de activación</li>
+          <li onclick="checkEx('e3',this,0)">B) Rango de tolerancia</li>
+          <li onclick="checkEx('e3',this,1)">C) Punto de ajuste (Set Point)</li>
+          <li onclick="checkEx('e3',this,0)">D) Señal de error</li>
+        </ul>
+        <div class="ejercicio-fb fb-ok" id="fb-e3-ok">✓ Correcto. El Set Point (punto de ajuste) es el valor de referencia que el sistema busca mantener. En este caso 150 PSI es el "blanco" del regulador.</div>
+        <div class="ejercicio-fb fb-bad" id="fb-e3-bad">✗ Incorrecto. El valor de referencia u objetivo en sistemas homeostáticos se denomina "Set Point" o punto de ajuste. No confundir con el umbral ni el rango.</div>
+      </div>
+
+      <!-- E4 -->
+      <div class="ejercicio">
+        <div class="ejercicio-num">EJERCICIO 04</div>
+        <div class="ejercicio-q">¿Qué tipo de equilibrio caracteriza a un ecosistema con poblaciones de depredadores y presas que oscilan pero no se extingan?</div>
+        <ul class="ejercicio-opts" id="e4">
+          <li onclick="checkEx('e4',this,0)">A) Equilibrio estático</li>
+          <li onclick="checkEx('e4',this,1)">B) Equilibrio dinámico</li>
+          <li onclick="checkEx('e4',this,0)">C) Equilibrio inestable</li>
+          <li onclick="checkEx('e4',this,0)">D) Equilibrio termodinámico</li>
+        </ul>
+        <div class="ejercicio-fb fb-ok" id="fb-e4-ok">✓ Correcto. Es un equilibrio dinámico: las variables fluctúan continuamente pero el sistema como un todo mantiene su estructura y funcionalidad a largo plazo.</div>
+        <div class="ejercicio-fb fb-bad" id="fb-e4-bad">✗ Incorrecto. En un equilibrio estático no habría cambios; en el inestable el sistema colapsaría. Las oscilaciones poblacionales son el ejemplo clásico de equilibrio dinámico.</div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- JUEGOS -->
+<section id="juegos">
+  <div class="section-wrap">
+    <div class="section-label">06 · Juegos Interactivos</div>
+    <h2 class="section-title">Aprende <em>jugando</em></h2>
+    <p class="section-body">Tres juegos diseñados para reforzar los conceptos de homeostasis y equilibrio de manera activa y divertida.</p>
+
+    <div class="games-grid">
+
+      <!-- JUEGO 1: Calibra el Organismo -->
+      <div class="game-card">
+        <div class="game-header">
+          <div class="game-badge">JUEGO 1</div>
+          <div class="game-title">⚙️ Calibra el Organismo</div>
+        </div>
+        <div class="game-body">
+          <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:1rem;">Ajusta los parámetros para mantener al organismo en homeostasis. ¡Todos deben estar en la zona verde al mismo tiempo!</p>
+          <div class="slider-game">
+            <div class="sg-param">
+              <label>🌡️ Temperatura <span id="g1-temp-val">37.0 °C</span></label>
+              <input type="range" id="g1-temp" min="34" max="40" step="0.1" value="37" oninput="updateGame1()">
+            </div>
+            <div class="sg-param">
+              <label>🩸 Glucosa <span id="g1-glu-val">90 mg/dL</span></label>
+              <input type="range" id="g1-glu" min="50" max="200" step="1" value="90" oninput="updateGame1()">
+            </div>
+            <div class="sg-param">
+              <label>❤️ Presión <span id="g1-pres-val">120 mmHg</span></label>
+              <input type="range" id="g1-pres" min="80" max="180" step="1" value="120" oninput="updateGame1()">
+            </div>
+            <div class="sg-param">
+              <label>⚗️ pH <span id="g1-ph-val">7.40</span></label>
+              <input type="range" id="g1-ph" min="7.0" max="7.8" step="0.01" value="7.4" oninput="updateGame1()">
+            </div>
+            <div class="sg-score" id="g1-score" style="color:var(--accent4)">0%</div>
+            <div class="sg-feedback" id="g1-feedback">Ajusta los deslizadores para alcanzar la homeostasis</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUEGO 2: Empareja Conceptos -->
+      <div class="game-card">
+        <div class="game-header">
+          <div class="game-badge">JUEGO 2</div>
+          <div class="game-title">🧩 Empareja: Componente → Función</div>
+        </div>
+        <div class="game-body">
+          <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:1rem;">Arrastra cada componente a su función correspondiente en el sistema homeostático.</p>
+          <div class="match-game">
+            <div class="match-columns">
+              <div>
+                <h4>Componentes</h4>
+                <div class="match-item" draggable="true" data-id="sensor" ondragstart="dragStart(event)">Receptor</div>
+                <div class="match-item" draggable="true" data-id="control" ondragstart="dragStart(event)">Centro Control</div>
+                <div class="match-item" draggable="true" data-id="efector" ondragstart="dragStart(event)">Efector</div>
+                <div class="match-item" draggable="true" data-id="setpoint" ondragstart="dragStart(event)">Set Point</div>
+              </div>
+              <div>
+                <h4>Funciones</h4>
+                <div class="match-drop" data-accept="sensor" ondragover="dragOver(event)" ondrop="dropItem(event,this)">Detecta cambios</div>
+                <div class="match-drop" data-accept="control" ondragover="dragOver(event)" ondrop="dropItem(event,this)">Procesa y ordena respuesta</div>
+                <div class="match-drop" data-accept="efector" ondragover="dragOver(event)" ondrop="dropItem(event,this)">Produce el cambio correctivo</div>
+                <div class="match-drop" data-accept="setpoint" ondragover="dragOver(event)" ondrop="dropItem(event,this)">Define el valor objetivo</div>
+              </div>
+            </div>
+            <div class="match-actions">
+              <button class="sm-btn sm-check" onclick="checkMatch()">✓ Verificar</button>
+              <button class="sm-btn sm-reset2" onclick="resetMatch()">↺ Reiniciar</button>
+            </div>
+            <div class="match-result" id="match-result">Arrastra y suelta para emparejar</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- JUEGO 3: Verdadero / Falso bajo presión -->
+      <div class="game-card" style="grid-column:span 1;">
+        <div class="game-header">
+          <div class="game-badge">JUEGO 3</div>
+          <div class="game-title">⏱️ ¡Verdadero o Falso!</div>
+        </div>
+        <div class="game-body">
+          <p style="font-size:.8rem;color:var(--text-muted);margin-bottom:1rem;">Responde en 10 segundos. ¿Verdadero o Falso? 8 afirmaciones sobre homeostasis.</p>
+          <div class="tf-game">
+            <div class="tf-question" id="tf-q">Presiona "Iniciar" para comenzar</div>
+            <div class="tf-timer-bar-wrap"><div class="tf-timer-bar" id="tf-timer" style="width:100%"></div></div>
+            <div class="tf-btns">
+              <button class="tf-btn tf-v" onclick="tfAnswer(true)" id="tf-v-btn" disabled>✓ VERDADERO</button>
+              <button class="tf-btn tf-f" onclick="tfAnswer(false)" id="tf-f-btn" disabled>✗ FALSO</button>
+            </div>
+            <div class="tf-score-row">
+              <div>Correctas: <span id="tf-correct">0</span></div>
+              <div>Pregunta: <span id="tf-qnum">0/8</span></div>
+              <div>Pts: <span id="tf-pts">0</span></div>
+            </div>
+            <div class="tf-feedback" id="tf-fb"></div>
+            <button class="tf-start-btn" id="tf-start" onclick="tfStart()">▶ Iniciar Ronda</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="section-wrap">
+    <div class="section-label">07 · Videos Educativos</div>
+    <h2 class="section-title">Aprende con <em>recursos audiovisuales</em></h2>
+    <p class="section-body">Estos videos complementan la teoría con explicaciones visuales, animaciones y ejemplos del mundo real.</p>
+
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/4Y6JiXLCnD4" allowfullscreen loading="lazy" title="Homeostasis explicada"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">BIOLOGÍA · ESPAÑOL</div>
+          <div class="video-ttl">¿Qué es la Homeostasis?</div>
+          <div class="video-desc">Explicación clara de los mecanismos de homeostasis con animaciones del sistema termorregulador humano.</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/vI5HtAn27KQ" allowfullscreen loading="lazy" title="Retroalimentación negativa"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">SISTEMAS · ESPAÑOL</div>
+          <div class="video-ttl">Retroalimentación Negativa y Positiva</div>
+          <div class="video-desc">Conceptos de feedback negativo y positivo aplicados a sistemas biológicos y de control industrial.</div>
+        </div>
+      </div>
+      <div class="video-card">
+        <div class="video-thumb">
+          <iframe src="https://www.youtube.com/embed/yKQGn1yqfr8" allowfullscreen loading="lazy" title="Equilibrio en ecosistemas"></iframe>
+        </div>
+        <div class="video-info">
+          <div class="video-tag">ECOLOGÍA · ESPAÑOL</div>
+          <div class="video-ttl">Equilibrio en Ecosistemas</div>
+          <div class="video-desc">Cómo los ecosistemas mantienen el equilibrio dinámico y qué sucede cuando se rompe por acción humana.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="section-wrap">
+    <div class="section-label">08 · Evaluación</div>
+    <h2 class="section-title">Quiz <em>Interactivo</em></h2>
+    <p class="section-body">10 preguntas para evaluar tu comprensión de homeostasis y parámetros de sistemas. Recibirás retroalimentación al final.</p>
+
+    <div class="quiz-wrap">
+      <!-- Progress -->
+      <div class="quiz-progress-wrap" id="quiz-progress-wrap">
+        <div class="quiz-progress-label">
+          <span>Progreso</span><span id="quiz-prog-txt">0 / 10</span>
+        </div>
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quiz-prog-fill" style="width:0%"></div></div>
+      </div>
+
+      <!-- Question -->
+      <div id="quiz-question-area">
+        <div class="quiz-q" id="quiz-q-text">Cargando pregunta...</div>
+        <div class="quiz-opts" id="quiz-opts"></div>
+        <div class="quiz-nav">
+          <button class="quiz-btn quiz-next" id="quiz-next-btn" onclick="nextQuizQ()" disabled>Siguiente →</button>
+        </div>
+      </div>
+
+      <!-- Result -->
+      <div class="quiz-result" id="quiz-result">
+        <div class="quiz-score-num" id="qr-score">0</div>
+        <div class="quiz-score-label">puntos de 10</div>
+        <div class="quiz-score-msg" id="qr-msg"></div>
+        <button class="quiz-restart" onclick="restartQuiz()">↺ Intentar de Nuevo</button>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- REFERENCIAS -->
+<section id="referencias">
+  <div class="section-wrap">
+    <div class="section-label">09 · Referencias</div>
+    <h2 class="section-title">Fuentes y <em>Bibliografía</em></h2>
+    <ul class="ref-list">
+      <li><strong>Cannon, W. B. (1932).</strong> <em>The Wisdom of the Body.</em> W.W. Norton & Company. (Obra que acuña y formaliza el término homeostasis.)</li>
+      <li><strong>Bernard, C. (1865).</strong> <em>Introduction à l'étude de la médecine expérimentale.</em> J.B. Baillière. (Primera formulación del "milieu intérieur".)</li>
+      <li><strong>Wiener, N. (1948).</strong> <em>Cybernetics: Or Control and Communication in the Animal and the Machine.</em> MIT Press. (Fundamentos de la cibernética y retroalimentación.)</li>
+      <li><strong>Sherwood, L. (2015).</strong> <em>Fisiología Humana: De las Células a los Sistemas</em> (8ª ed.). Cengage Learning. (Referencia estándar en homeostasis fisiológica.)</li>
+      <li><strong>Ogata, K. (2010).</strong> <em>Modern Control Engineering</em> (5ª ed.). Prentice Hall. (Sistemas de control y retroalimentación en ingeniería.)</li>
+      <li><strong>Tortora, G. J., & Derrickson, B. (2017).</strong> <em>Principios de Anatomía y Fisiología</em> (14ª ed.). Médica Panamericana. (Cap. 1: Introducción al cuerpo humano y homeostasis.)</li>
+      <li><strong>García Suchanek, C. (2001).</strong> <em>Introducción a la Teoría General de Sistemas.</em> Universidad Central de Venezuela. (Perspectiva sistémica del equilibrio y homeostasis.)</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">OVA · Homeostasis & Equilibrio en Sistemas</div>
+  <div class="footer-sub" style="margin-top:.35rem;">Thomas Alejandro Galeano Omaña · Ingeniería de Sistemas · 2025</div>
+  <div class="footer-sub" style="margin-top:.5rem;opacity:.5;">Desarrollado con HTML · CSS · JavaScript</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
