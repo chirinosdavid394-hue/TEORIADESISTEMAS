@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OVA · Definiciones de Sistema · TGS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ═══════════════════════════ NAVBAR ═══════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-brand">
+      <span class="nav-logo">◈</span>
+      <span>OVA · TGS</span>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#intro"     class="nav-link">Inicio</a></li>
+      <li><a href="#teoria"    class="nav-link">Teoría</a></li>
+      <li><a href="#ejemplos"  class="nav-link">Ejemplos</a></li>
+      <li><a href="#video"     class="nav-link">Video</a></li>
+      <li><a href="#juego1"    class="nav-link">Sopa</a></li>
+      <li><a href="#juego2"    class="nav-link">Emparejar</a></li>
+      <li><a href="#quiz"      class="nav-link">Quiz</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
+  <header class="hero" id="intro">
+    <div class="hero-bg-grid"></div>
+    <div class="hero-content">
+      <p class="hero-tag">Teoría General de Sistemas · Universidad Simón Bolívar</p>
+      <h1 class="hero-title">Definiciones<br><em>de Sistema</em></h1>
+      <p class="hero-sub">Un recorrido conceptual, interactivo y evaluativo sobre<br>los fundamentos de la Teoría General de Sistemas.</p>
+      <div class="hero-meta">
+        <span>Brayan Andrey Casanova Flórez</span>
+        <span class="divider">·</span>
+        <span>Docente: Msc. Álvaro Salamanca Landínez</span>
+      </div>
+      <a href="#teoria" class="btn-primary">Comenzar ↓</a>
+    </div>
+    <div class="hero-orb orb1"></div>
+    <div class="hero-orb orb2"></div>
+  </header>
+
+  <!-- ═══════════════════════════ CONTEXTUALIZACIÓN ═══════════════════════════ -->
+  <section class="section context-section">
+    <div class="container">
+      <div class="section-label">Contextualización</div>
+      <h2 class="section-title">¿Por qué definir un <span class="gold">Sistema</span>?</h2>
+      <div class="context-grid">
+        <div class="context-card">
+          <div class="context-icon">🌐</div>
+          <h3>TGS: Una mirada global</h3>
+          <p>La <strong>Teoría General de Sistemas</strong> (TGS), propuesta por Ludwig von Bertalanffy a mediados del siglo XX, busca identificar principios y leyes aplicables a sistemas de cualquier naturaleza —biológicos, sociales, tecnológicos— superando el pensamiento reduccionista.</p>
+        </div>
+        <div class="context-card">
+          <div class="context-icon">🔗</div>
+          <h3>La importancia de la definición</h3>
+          <p>Definir con precisión qué es un <strong>sistema</strong> es el primer paso epistemológico de la TGS. Sin una definición clara, no es posible identificar sus elementos, establecer límites ni comprender cómo interactúan sus partes para alcanzar un propósito.</p>
+        </div>
+        <div class="context-card">
+          <div class="context-icon">⚙️</div>
+          <h3>Pensamiento sistémico</h3>
+          <p>Comprender los sistemas permite abordar problemas complejos de forma holística: en lugar de analizar cada parte por separado, el <strong>pensamiento sistémico</strong> nos invita a ver las relaciones, flujos y emergencias que surgen del conjunto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ TEORÍA ═══════════════════════════ -->
+  <section class="section teoria-section" id="teoria">
+    <div class="container">
+      <div class="section-label">Explicación Teórica</div>
+      <h2 class="section-title">Definiciones <span class="gold">Clásicas</span> de Sistema</h2>
+      <p class="section-desc">Tres perspectivas fundamentales que han construido el concepto de sistema a lo largo de la historia del pensamiento científico y filosófico.</p>
+
+      <div class="authors-grid">
+
+        <!-- Bertalanffy -->
+        <article class="author-card" data-author="bertalanffy">
+          <div class="author-header">
+            <div class="author-avatar">B</div>
+            <div>
+              <h3>Ludwig von Bertalanffy</h3>
+              <p class="author-year">Biólogo y filósofo · 1901–1972</p>
+            </div>
+          </div>
+          <blockquote class="def-quote">
+            "Un sistema es un conjunto de elementos en interacción."
+          </blockquote>
+          <div class="def-expand">
+            <p>Para Bertalanffy, padre de la TGS, un sistema no puede reducirse a la suma de sus partes. La clave está en las <strong>interacciones</strong>: un sistema biológico, por ejemplo, no funciona si se estudian sus órganos de forma aislada. Sus propiedades emergen de la relación dinámica entre componentes.</p>
+            <div class="concepts-chips">
+              <span class="chip">Totalidad</span>
+              <span class="chip">Interacción</span>
+              <span class="chip">Emergencia</span>
+              <span class="chip">Límites</span>
+            </div>
+          </div>
+          <button class="btn-expand" onclick="toggleExpand(this)">Ver más ▾</button>
+        </article>
+
+        <!-- Hegel -->
+        <article class="author-card" data-author="hegel">
+          <div class="author-header">
+            <div class="author-avatar">H</div>
+            <div>
+              <h3>Georg Wilhelm F. Hegel</h3>
+              <p class="author-year">Filósofo · 1770–1831</p>
+            </div>
+          </div>
+          <blockquote class="def-quote">
+            "El todo es más que la suma de sus partes."
+          </blockquote>
+          <div class="def-expand">
+            <p>Aunque anterior a la TGS formal, el holismo hegeliano sentó las bases filosóficas del pensamiento sistémico. Para Hegel, cualquier entidad debe comprenderse en su <strong>totalidad dialéctica</strong>: tesis, antítesis y síntesis son el movimiento dinámico de cualquier sistema que evoluciona hacia estados superiores de organización.</p>
+            <div class="concepts-chips">
+              <span class="chip">Holismo</span>
+              <span class="chip">Dialéctica</span>
+              <span class="chip">Síntesis</span>
+              <span class="chip">Evolución</span>
+            </div>
+          </div>
+          <button class="btn-expand" onclick="toggleExpand(this)">Ver más ▾</button>
+        </article>
+
+        <!-- Cibernética / Wiener -->
+        <article class="author-card" data-author="wiener">
+          <div class="author-header">
+            <div class="author-avatar">W</div>
+            <div>
+              <h3>Norbert Wiener</h3>
+              <p class="author-year">Cibernética · 1894–1964</p>
+            </div>
+          </div>
+          <blockquote class="def-quote">
+            "Un sistema es una estructura capaz de recibir, procesar y emitir información mediante retroalimentación."
+          </blockquote>
+          <div class="def-expand">
+            <p>Wiener, padre de la cibernética, define el sistema en términos de flujos de información y control. El concepto de <strong>retroalimentación (feedback)</strong> es central: el sistema ajusta su comportamiento según la diferencia entre el estado actual y el estado deseado. Esta visión conecta sistemas biológicos, mecánicos y sociales bajo un mismo principio regulador.</p>
+            <div class="concepts-chips">
+              <span class="chip">Retroalimentación</span>
+              <span class="chip">Control</span>
+              <span class="chip">Información</span>
+              <span class="chip">Homeostasis</span>
+            </div>
+          </div>
+          <button class="btn-expand" onclick="toggleExpand(this)">Ver más ▾</button>
+        </article>
+
+      </div>
+
+      <!-- Componentes de un sistema -->
+      <div class="components-section">
+        <h3 class="subsection-title">Componentes <span class="gold">Universales</span> de un Sistema</h3>
+        <div class="components-flow">
+          <div class="comp-box entrada">
+            <div class="comp-icon">📥</div>
+            <h4>ENTRADA</h4>
+            <p>Recursos, datos o energía que ingresan al sistema desde el entorno.</p>
+          </div>
+          <div class="arrow-flow">→</div>
+          <div class="comp-box proceso">
+            <div class="comp-icon">⚙️</div>
+            <h4>PROCESO</h4>
+            <p>Transformación interna de los insumos a través de las interacciones entre elementos.</p>
+          </div>
+          <div class="arrow-flow">→</div>
+          <div class="comp-box salida">
+            <div class="comp-icon">📤</div>
+            <h4>SALIDA</h4>
+            <p>Resultado, producto o efecto generado por el sistema hacia su entorno.</p>
+          </div>
+          <div class="feedback-arrow">
+            <div class="fb-line"></div>
+            <span class="fb-label">↺ Retroalimentación</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ EJEMPLOS ═══════════════════════════ -->
+  <section class="section ejemplos-section" id="ejemplos">
+    <div class="container">
+      <div class="section-label">Ejemplos Prácticos</div>
+      <h2 class="section-title">Sistemas en el <span class="gold">Mundo Real</span></h2>
+      <p class="section-desc">Identificar sistemas en la realidad nos permite aplicar los conceptos teóricos de forma concreta.</p>
+
+      <div class="examples-grid">
+
+        <div class="example-card" onclick="openModal('solar')">
+          <div class="example-img solar-img">
+            <div class="planet-anim">
+              <div class="sun"></div>
+              <div class="orbit o1"><div class="planet p1"></div></div>
+              <div class="orbit o2"><div class="planet p2"></div></div>
+              <div class="orbit o3"><div class="planet p3"></div></div>
+            </div>
+          </div>
+          <div class="example-body">
+            <h3>Sistema Solar</h3>
+            <p>El Sol y los planetas interactúan mediante fuerzas gravitacionales en un sistema dinámico y autorregulado.</p>
+            <span class="example-tag">Natural · Cerrado</span>
+          </div>
+        </div>
+
+        <div class="example-card" onclick="openModal('computadora')">
+          <div class="example-img comp-img">
+            <div class="pc-anim">
+              <div class="pc-monitor">
+                <div class="pc-screen">
+                  <div class="code-line"></div>
+                  <div class="code-line short"></div>
+                  <div class="code-line"></div>
+                </div>
+              </div>
+              <div class="pc-base"></div>
+            </div>
+          </div>
+          <div class="example-body">
+            <h3>La Computadora</h3>
+            <p>Hardware y software como elementos interconectados que procesan información para generar resultados.</p>
+            <span class="example-tag">Artificial · Abierto</span>
+          </div>
+        </div>
+
+        <div class="example-card" onclick="openModal('cuerpo')">
+          <div class="example-img bio-img">
+            <div class="body-anim">
+              <div class="heartbeat">
+                <svg viewBox="0 0 100 50" class="ecg">
+                  <polyline points="0,25 20,25 30,5 40,45 50,10 60,40 70,25 100,25" fill="none" stroke="#D4AF37" stroke-width="2"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="example-body">
+            <h3>El Cuerpo Humano</h3>
+            <p>Sistemas circulatorio, nervioso y digestivo que trabajan coordinadamente para mantener la homeostasis.</p>
+            <span class="example-tag">Biológico · Adaptativo</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ MODALES DE EJEMPLOS ═══════════════════════════ -->
+  <div class="modal-overlay" id="modal-solar" onclick="closeModal('solar')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('solar')">✕</button>
+      <h3>🌞 Sistema Solar como Sistema</h3>
+      <table class="modal-table">
+        <tr><th>Componente</th><th>Descripción</th></tr>
+        <tr><td><strong>Entrada</strong></td><td>Energía gravitacional, radiación solar, materia interestelar</td></tr>
+        <tr><td><strong>Elementos</strong></td><td>Sol, 8 planetas, lunas, asteroides, cometas</td></tr>
+        <tr><td><strong>Proceso</strong></td><td>Interacciones gravitacionales, órbitas, fusión nuclear en el Sol</td></tr>
+        <tr><td><strong>Salida</strong></td><td>Radiación, calor, luz, condiciones para la vida en la Tierra</td></tr>
+        <tr><td><strong>Retroalimentación</strong></td><td>Las perturbaciones gravitacionales son corregidas por el equilibrio orbital (resonancia)</td></tr>
+        <tr><td><strong>Límite</strong></td><td>La heliosfera, hasta donde llega la influencia del viento solar</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-computadora" onclick="closeModal('computadora')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('computadora')">✕</button>
+      <h3>💻 La Computadora como Sistema</h3>
+      <table class="modal-table">
+        <tr><th>Componente</th><th>Descripción</th></tr>
+        <tr><td><strong>Entrada</strong></td><td>Teclado, ratón, archivos, red de internet</td></tr>
+        <tr><td><strong>Elementos</strong></td><td>CPU, RAM, disco duro, tarjeta gráfica, SO</td></tr>
+        <tr><td><strong>Proceso</strong></td><td>Cómputo, almacenamiento, gestión de recursos</td></tr>
+        <tr><td><strong>Salida</strong></td><td>Pantalla, impresora, archivos, audio</td></tr>
+        <tr><td><strong>Retroalimentación</strong></td><td>El sistema operativo monitorea el uso de CPU/RAM y regula procesos</td></tr>
+        <tr><td><strong>Límite</strong></td><td>El gabinete físico y las interfaces de red definen los límites del sistema</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-cuerpo" onclick="closeModal('cuerpo')">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="closeModal('cuerpo')">✕</button>
+      <h3>🫀 El Cuerpo Humano como Sistema</h3>
+      <table class="modal-table">
+        <tr><th>Componente</th><th>Descripción</th></tr>
+        <tr><td><strong>Entrada</strong></td><td>Alimentos, agua, oxígeno, estímulos sensoriales</td></tr>
+        <tr><td><strong>Elementos</strong></td><td>Órganos, tejidos, células, sistemas (circulatorio, nervioso...)</td></tr>
+        <tr><td><strong>Proceso</strong></td><td>Digestión, respiración, circulación, respuesta inmune</td></tr>
+        <tr><td><strong>Salida</strong></td><td>Movimiento, calor corporal, desechos, respuestas conductuales</td></tr>
+        <tr><td><strong>Retroalimentación</strong></td><td>El hipotálamo regula la temperatura; el páncreas controla la glucosa (homeostasis)</td></tr>
+        <tr><td><strong>Límite</strong></td><td>La piel define el límite físico entre el sistema y su entorno</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════ VIDEO ═══════════════════════════ -->
+  <section class="section video-section" id="video">
+    <div class="container">
+      <div class="section-label">Recurso Audiovisual</div>
+      <h2 class="section-title">Aprende con <span class="gold">Video</span></h2>
+      <p class="section-desc">Refuerza los conceptos teóricos con este recurso visual sobre la Teoría General de Sistemas.</p>
+      <div class="video-wrapper">
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube-nocookie.com/embed/rcAAGRp1eHk" 
+          title="Teoría General de Sistemas - Conceptos Básicos" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
+      </div>
+      <p class="video-caption">📽 <em>TEORÍA GENERAL DE SISTEMAS | ANÁLISIS DE SISTEMAS | CONCEPTOS BÁSICOS DE LA TGS</em></p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ JUEGO 1: SOPA DE LETRAS ═══════════════════════════ -->
+  <section class="section game-section" id="juego1">
+    <div class="container">
+      <div class="section-label">Juego Interactivo 1</div>
+      <h2 class="section-title">Sopa de <span class="gold">Letras</span></h2>
+      <p class="section-desc">Encuentra las 5 palabras clave ocultas en la cuadrícula. Haz clic en la primera y última letra de cada palabra.</p>
+
+      <div class="game1-layout">
+        <div class="wordsearch-panel">
+          <div class="grid-container" id="wordGrid"></div>
+        </div>
+        <div class="wordsearch-sidebar">
+          <h4>Palabras a encontrar:</h4>
+          <ul class="word-list" id="wordList"></ul>
+          <div class="ws-score">
+            <span>Encontradas: <strong id="foundCount">0</strong> / 5</span>
+          </div>
+          <button class="btn-secondary" onclick="initWordSearch()">↺ Reiniciar</button>
+          <div id="ws-win-msg" class="win-message" style="display:none">
+            🏆 ¡Excelente! Encontraste todas las palabras.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ JUEGO 2: EMPAREJAR ═══════════════════════════ -->
+  <section class="section game-section game2-bg" id="juego2">
+    <div class="container">
+      <div class="section-label">Juego Interactivo 2</div>
+      <h2 class="section-title">Empareja <span class="gold">Conceptos</span></h2>
+      <p class="section-desc">Haz clic en un concepto y luego en su definición correcta para emparejarlos. ¡Completa los 5 pares!</p>
+
+      <div class="match-game" id="matchGame">
+        <div class="match-col" id="matchTerms">
+          <h4 class="col-title">📌 Conceptos</h4>
+        </div>
+        <div class="match-col" id="matchDefs">
+          <h4 class="col-title">📖 Definiciones</h4>
+        </div>
+      </div>
+
+      <div class="match-feedback" id="matchFeedback"></div>
+      <div class="match-score">Pares correctos: <strong id="matchScore">0</strong> / 5</div>
+      <button class="btn-secondary" onclick="initMatchGame()">↺ Reiniciar</button>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ QUIZ ═══════════════════════════ -->
+  <section class="section quiz-section" id="quiz">
+    <div class="container">
+      <div class="section-label">Evaluación Interactiva</div>
+      <h2 class="section-title">Quiz de <span class="gold">Conocimientos</span></h2>
+      <p class="section-desc">Responde las 5 preguntas. Al finalizar verás tu puntuación y retroalimentación completa.</p>
+
+      <div class="quiz-container" id="quizContainer">
+        <!-- Generado por JS -->
+      </div>
+
+      <div class="quiz-result" id="quizResult" style="display:none">
+        <div class="result-score" id="resultScore"></div>
+        <div class="result-feedback" id="resultFeedback"></div>
+        <button class="btn-primary" onclick="initQuiz()">↺ Intentar de nuevo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ FOOTER ═══════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">◈</span>
+        <span>OVA · Definiciones de Sistema</span>
+      </div>
+      <div class="footer-info">
+        <p>Brayan Andrey Casanova Flórez · Ingeniería de Sistemas</p>
+        <p>Universidad Simón Bolívar · TGS · 2025</p>
+        <p class="footer-ref">Referencias: Bertalanffy, L. (1968). <em>General System Theory</em>. Braziller. · Wiener, N. (1948). <em>Cybernetics</em>. MIT Press.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
