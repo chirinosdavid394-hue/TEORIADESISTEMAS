@@ -1,0 +1,2534 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enfoque Sistémico · TGS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+         :root {
+            --ink: #09090f;
+            --deep: #0d0b1e;
+            --void: #060612;
+            --violet-900: #1a0a3d;
+            --violet-800: #2d1169;
+            --violet-700: #4318a8;
+            --violet-600: #5b21d4;
+            --violet-500: #7c3aed;
+            --violet-400: #9b66f5;
+            --violet-300: #c4a1ff;
+            --violet-200: #ddc9ff;
+            --blue-900: #0a0f2e;
+            --blue-800: #111b5c;
+            --blue-700: #1a2f9c;
+            --blue-600: #2240c9;
+            --blue-500: #3b5bff;
+            --blue-400: #6b8dff;
+            --blue-300: #a5bbff;
+            --accent: #b44dff;
+            --accent2: #4da6ff;
+            --glow: rgba(124, 58, 237, 0.4);
+            --glow2: rgba(77, 166, 255, 0.3);
+            --text: #e8e0ff;
+            --text-dim: #9988cc;
+            --text-faint: #554477;
+            --glass: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --card-bg: rgba(20, 12, 50, 0.7);
+        }
+        
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            background: var(--void);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        /* CURSOR */
+        
+        .cursor {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--accent);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s;
+            mix-blend-mode: screen;
+        }
+        
+        .cursor-ring {
+            position: fixed;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid rgba(180, 77, 255, 0.5);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s, width 0.2s, height 0.2s;
+        }
+        /* CANVAS STARS */
+        
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        /* NAV */
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2.5rem;
+            background: rgba(6, 6, 18, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .nav-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--violet-300), var(--blue-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 0.2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+        
+        .nav-links a:hover {
+            color: var(--text);
+            background: var(--glass);
+            border-color: var(--glass-border);
+        }
+        /* SECTIONS */
+        
+        section {
+            position: relative;
+            z-index: 1;
+        }
+        /* HERO */
+        
+        #hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(43, 17, 105, 0.6) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(26, 47, 156, 0.3) 0%, transparent 60%);
+        }
+        
+        .hero-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 0.25em;
+            color: var(--violet-400);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            padding: 0.35rem 1rem;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 20px;
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.08);
+        }
+        
+        .hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 9vw, 7.5rem);
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title .line1 {
+            display: block;
+            color: var(--text);
+        }
+        
+        .hero-title .line2 {
+            display: block;
+            background: linear-gradient(135deg, var(--violet-400) 0%, var(--blue-400) 50%, var(--violet-300) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradShift 4s ease infinite;
+        }
+        
+        @keyframes gradShift {
+            0%,
+            100% {
+                background-position: 0% 50%
+            }
+            50% {
+                background-position: 100% 50%
+            }
+        }
+        
+        .hero-sub {
+            max-width: 560px;
+            color: var(--text-dim);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            background: linear-gradient(135deg, var(--violet-600), var(--blue-600));
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 0 30px var(--glow);
+            transition: all 0.3s;
+            letter-spacing: 0.02em;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px var(--glow);
+        }
+        
+        .btn-outline {
+            padding: 0.85rem 2rem;
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0.02em;
+        }
+        
+        .btn-outline:hover {
+            background: var(--glass);
+            border-color: var(--violet-600);
+        }
+        /* ORB ANIMATION */
+        
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb1 {
+            width: 500px;
+            height: 500px;
+            background: rgba(91, 33, 212, 0.15);
+            top: -10%;
+            left: -5%;
+            animation-delay: 0s;
+        }
+        
+        .orb2 {
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 91, 255, 0.12);
+            bottom: 5%;
+            right: -5%;
+            animation-delay: -3s;
+        }
+        
+        .orb3 {
+            width: 250px;
+            height: 250px;
+            background: rgba(180, 77, 255, 0.1);
+            top: 40%;
+            left: 60%;
+            animation-delay: -6s;
+        }
+        
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0) scale(1)
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05)
+            }
+        }
+        /* SCROLL INDICATOR */
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-faint);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+        
+        .scroll-line {
+            width: 1px;
+            height: 50px;
+            background: linear-gradient(to bottom, var(--violet-500), transparent);
+            animation: scrollPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes scrollPulse {
+            0%,
+            100% {
+                opacity: 0.3
+            }
+            50% {
+                opacity: 1
+            }
+        }
+        /* WRAPPER */
+        
+        .section-wrap {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        /* SECTION HEADER */
+        
+        .section-header {
+            margin-bottom: 3.5rem;
+        }
+        
+        .section-tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.25em;
+            color: var(--violet-400);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .section-tag::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--violet-500);
+        }
+        
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        .section-title span {
+            background: linear-gradient(135deg, var(--violet-400), var(--blue-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* CONTEXT */
+        
+        #contextualizacion {
+            background: linear-gradient(180deg, var(--void) 0%, rgba(13, 11, 30, 0.98) 100%);
+        }
+        
+        .context-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        
+        .context-text p {
+            color: var(--text-dim);
+            line-height: 1.85;
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .context-text p strong {
+            color: var(--violet-300);
+            font-weight: 600;
+        }
+        
+        .context-visual {
+            position: relative;
+            padding: 2rem;
+        }
+        
+        .sys-diagram {
+            width: 100%;
+            aspect-ratio: 1;
+            max-width: 360px;
+            margin: 0 auto;
+            display: block;
+        }
+        /* CARDS */
+        
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--violet-600), var(--blue-500), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(91, 33, 212, 0.3), rgba(59, 91, 255, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+        
+        .card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.7rem;
+            color: var(--text);
+        }
+        
+        .card p {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            line-height: 1.75;
+        }
+        /* CONCEPTOS - TIMELINE */
+        
+        #conceptos {
+            background: rgba(10, 9, 30, 0.98);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--violet-700), var(--blue-700), transparent);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideIn 0.5s forwards;
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: none;
+            }
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -2.85rem;
+            top: 0.3rem;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--violet-500);
+            border: 2px solid var(--void);
+            box-shadow: 0 0 12px var(--glow);
+        }
+        
+        .timeline-item h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--violet-300);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-item p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .concept-badge {
+            display: inline-block;
+            padding: 0.2rem 0.7rem;
+            border-radius: 20px;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            font-size: 0.7rem;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--violet-300);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
+        }
+        /* PROPIEDADES */
+        
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+        }
+        
+        .prop-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s;
+            cursor: default;
+        }
+        
+        .prop-card:hover {
+            border-color: rgba(77, 166, 255, 0.3);
+            box-shadow: 0 0 30px var(--glow2);
+        }
+        
+        .prop-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--violet-400), var(--blue-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        
+        .prop-card h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin: 0.5rem 0 0.4rem;
+            color: var(--text);
+        }
+        
+        .prop-card p {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+        /* EJEMPLOS */
+        
+        #ejemplos {
+            background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(26, 47, 156, 0.15) 0%, transparent 70%);
+        }
+        
+        .examples-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            background: transparent;
+            color: var(--text-dim);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--violet-700), var(--blue-700));
+            color: #fff;
+            border-color: transparent;
+        }
+        
+        .tab-btn:hover:not(.active) {
+            border-color: var(--violet-600);
+            color: var(--text);
+        }
+        
+        .tab-panel {
+            display: none;
+        }
+        
+        .tab-panel.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+            to {
+                opacity: 1;
+                transform: none
+            }
+        }
+        
+        .example-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .example-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--violet-300);
+        }
+        
+        .example-card p {
+            color: var(--text-dim);
+            line-height: 1.8;
+            font-size: 0.92rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .example-visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 200px;
+            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .example-visual::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(124, 58, 237, 0.15), transparent);
+        }
+        /* VIDEOS */
+        
+        #videos {
+            background: rgba(10, 9, 30, 0.98);
+        }
+        
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+        
+        .video-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s;
+            background: var(--card-bg);
+        }
+        
+        .video-wrapper:hover {
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 40px var(--glow);
+        }
+        
+        .video-thumb {
+            position: relative;
+            aspect-ratio: 16/9;
+        }
+        
+        .video-thumb iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .video-info {
+            padding: 1.2rem 1.5rem;
+        }
+        
+        .video-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        
+        .video-info p {
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+        /* EJERCICIOS */
+        
+        #ejercicios {
+            background: var(--void);
+        }
+        
+        .exercises-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+        
+        .exercise-item {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+        
+        .exercise-num {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--violet-400);
+            letter-spacing: 0.2em;
+            margin-bottom: 0.6rem;
+        }
+        
+        .exercise-item h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+        
+        .exercise-item p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+        
+        .exercise-textarea {
+            width: 100%;
+            min-height: 100px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.88rem;
+            padding: 0.9rem 1rem;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        
+        .exercise-textarea:focus {
+            border-color: var(--violet-600);
+        }
+        
+        .btn-small {
+            padding: 0.5rem 1.3rem;
+            border-radius: 25px;
+            font-size: 0.82rem;
+            background: linear-gradient(135deg, var(--violet-700), var(--blue-700));
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 600;
+            margin-top: 0.8rem;
+            transition: all 0.2s;
+        }
+        
+        .btn-small:hover {
+            opacity: 0.85;
+            transform: translateY(-1px);
+        }
+        
+        .feedback-msg {
+            margin-top: 0.7rem;
+            font-size: 0.82rem;
+            color: var(--violet-300);
+            display: none;
+            font-style: italic;
+        }
+        /* JUEGOS */
+        
+        #juegos {
+            background: radial-gradient(ellipse 60% 60% at 30% 50%, rgba(43, 17, 105, 0.15) 0%, transparent 70%);
+        }
+        
+        .games-nav {
+            display: flex;
+            gap: 0.7rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .game-nav-btn {
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--glass-border);
+            background: transparent;
+            color: var(--text-dim);
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s;
+        }
+        
+        .game-nav-btn.active {
+            background: var(--violet-700);
+            color: #fff;
+            border-color: var(--violet-600);
+            box-shadow: 0 0 20px var(--glow);
+        }
+        
+        .game-nav-btn:hover:not(.active) {
+            border-color: var(--violet-500);
+            color: var(--text);
+        }
+        
+        .game-container {
+            display: none;
+        }
+        
+        .game-container.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        /* GAME 1: Drag & Drop */
+        
+        .game-box {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+        
+        .game-box h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .game-box .game-desc {
+            color: var(--text-dim);
+            font-size: 0.88rem;
+            margin-bottom: 2rem;
+        }
+        
+        .drag-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+            min-height: 60px;
+            padding: 1rem;
+            border-radius: 14px;
+            border: 1px dashed rgba(124, 58, 237, 0.3);
+            background: rgba(255, 255, 255, 0.02);
+        }
+        
+        .drag-item {
+            padding: 0.45rem 1rem;
+            border-radius: 25px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: grab;
+            user-select: none;
+            transition: all 0.2s;
+            background: linear-gradient(135deg, rgba(91, 33, 212, 0.3), rgba(59, 91, 255, 0.2));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            color: var(--violet-200);
+        }
+        
+        .drag-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px var(--glow);
+        }
+        
+        .drag-item.dragging {
+            opacity: 0.5;
+            cursor: grabbing;
+        }
+        
+        .drop-zones {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .drop-zone {
+            min-height: 90px;
+            border-radius: 16px;
+            padding: 1rem;
+            border: 2px dashed rgba(77, 166, 255, 0.25);
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.2s;
+        }
+        
+        .drop-zone.dragover {
+            border-color: var(--violet-500);
+            background: rgba(124, 58, 237, 0.08);
+        }
+        
+        .drop-zone-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--blue-400);
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .game-score {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding: 1rem 1.5rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+        }
+        
+        .score-val {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--violet-400), var(--blue-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* GAME 2: Memory */
+        
+        .memory-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+        }
+        
+        .mem-card {
+            aspect-ratio: 1;
+            border-radius: 14px;
+            cursor: pointer;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            user-select: none;
+        }
+        
+        .mem-card.flipped {
+            transform: rotateY(180deg);
+        }
+        
+        .mem-card.matched {
+            cursor: default;
+        }
+        
+        .mem-front,
+        .mem-back {
+            position: absolute;
+            inset: 0;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backface-visibility: hidden;
+            font-size: 1.1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            text-align: center;
+            padding: 0.4rem;
+        }
+        
+        .mem-back {
+            background: linear-gradient(135deg, var(--violet-800), var(--blue-800));
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            font-size: 1.6rem;
+        }
+        
+        .mem-front {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            transform: rotateY(180deg);
+            font-size: 0.72rem;
+            color: var(--text-dim);
+        }
+        
+        .mem-card.matched .mem-back {
+            background: linear-gradient(135deg, rgba(91, 33, 212, 0.5), rgba(59, 91, 255, 0.4));
+            box-shadow: 0 0 20px var(--glow);
+        }
+        
+        .memory-stats {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--text-dim);
+        }
+        
+        .memory-stats span {
+            color: var(--violet-300);
+            font-weight: 700;
+        }
+        /* GAME 3: Quiz Rápido */
+        
+        .quick-quiz {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+        
+        .quiz-q {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+        
+        .quiz-opts {
+            display: grid;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .quiz-opt {
+            padding: 0.85rem 1.3rem;
+            border-radius: 14px;
+            cursor: pointer;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text);
+            font-size: 0.9rem;
+            text-align: left;
+            transition: all 0.2s;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        
+        .quiz-opt:hover:not(:disabled) {
+            border-color: var(--violet-500);
+            background: rgba(124, 58, 237, 0.08);
+        }
+        
+        .quiz-opt.correct {
+            background: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6;
+            color: #93c5fd;
+        }
+        
+        .quiz-opt.wrong {
+            background: rgba(220, 38, 38, 0.15);
+            border-color: #dc2626;
+            color: #fca5a5;
+        }
+        
+        .quiz-opt:disabled {
+            cursor: default;
+        }
+        
+        .quiz-progress {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .quiz-bar {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        
+        .quiz-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--violet-500), var(--blue-500));
+            transition: width 0.4s;
+        }
+        
+        .quiz-counter {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.78rem;
+            color: var(--text-dim);
+        }
+        
+        .quiz-feedback {
+            padding: 1rem 1.3rem;
+            border-radius: 14px;
+            font-size: 0.88rem;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+            display: none;
+        }
+        
+        .quiz-feedback.show {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        .quiz-feedback.ok {
+            background: rgba(59, 91, 255, 0.15);
+            border: 1px solid rgba(59, 91, 255, 0.3);
+        }
+        
+        .quiz-feedback.fail {
+            background: rgba(180, 77, 255, 0.1);
+            border: 1px solid rgba(180, 77, 255, 0.25);
+        }
+        
+        .quiz-result {
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .quiz-result.show {
+            display: block;
+        }
+        
+        .result-score {
+            font-family: 'Syne', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--violet-400), var(--blue-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .result-msg {
+            color: var(--text-dim);
+            margin: 0.5rem 0 1.5rem;
+        }
+        /* QUIZ EVALUACIÓN */
+        
+        #quiz {
+            background: rgba(10, 9, 30, 0.99);
+        }
+        
+        .quiz-eval {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+        
+        .quiz-eval-q {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 18px;
+            padding: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+        
+        .quiz-eval-q p {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .quiz-eval-opts {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .quiz-eval-opt {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.88rem;
+            background: transparent;
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            text-align: left;
+            width: 100%;
+        }
+        
+        .quiz-eval-opt:hover {
+            border-color: var(--violet-600);
+            background: rgba(124, 58, 237, 0.06);
+        }
+        
+        .quiz-eval-opt.selected {
+            background: rgba(124, 58, 237, 0.15);
+            border-color: var(--violet-500);
+            color: var(--violet-200);
+        }
+        
+        .eval-submit {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            border-radius: 16px;
+            margin-top: 1.5rem;
+            background: linear-gradient(135deg, var(--violet-600), var(--blue-600));
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.03em;
+            transition: all 0.3s;
+        }
+        
+        .eval-submit:hover {
+            box-shadow: 0 0 40px var(--glow);
+            transform: translateY(-2px);
+        }
+        
+        .eval-result {
+            text-align: center;
+            padding: 3rem;
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .eval-result.show {
+            display: block;
+        }
+        
+        .eval-big-score {
+            font-family: 'Syne', sans-serif;
+            font-size: 5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--violet-300), var(--blue-300));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+        }
+        
+        .eval-grade {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0.5rem 0 1rem;
+            color: var(--violet-300);
+        }
+        
+        .answers-review {
+            text-align: left;
+            margin-top: 1.5rem;
+            display: grid;
+            gap: 0.7rem;
+        }
+        
+        .ans-item {
+            padding: 0.8rem 1rem;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            line-height: 1.6;
+        }
+        
+        .ans-item.correct {
+            background: rgba(59, 91, 255, 0.12);
+            border: 1px solid rgba(59, 91, 255, 0.25);
+        }
+        
+        .ans-item.wrong {
+            background: rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(220, 38, 38, 0.2);
+        }
+        /* FOOTER */
+        
+        footer {
+            background: var(--void);
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer p {
+            color: var(--text-faint);
+            font-size: 0.82rem;
+            line-height: 1.9;
+        }
+        
+        footer strong {
+            color: var(--text-dim);
+        }
+        
+        .footer-logo {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--violet-400), var(--blue-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .refs {
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            text-align: left;
+        }
+        
+        .refs h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--text-dim);
+            margin-bottom: 0.8rem;
+        }
+        
+        .refs li {
+            list-style: none;
+            font-size: 0.75rem;
+            color: var(--text-faint);
+            margin-bottom: 0.4rem;
+        }
+        
+        .refs li::before {
+            content: '— ';
+            color: var(--violet-500);
+        }
+        /* DIVIDER */
+        
+        .wave-divider {
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .wave-divider svg {
+            display: block;
+        }
+        /* UTIL */
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-2 {
+            margin-top: 1rem;
+        }
+        
+        .highlight {
+            display: inline-block;
+            background: rgba(124, 58, 237, 0.15);
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            border-radius: 8px;
+            padding: 0.15rem 0.5rem;
+            color: var(--violet-300);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85em;
+        }
+        
+        @media (max-width: 768px) {
+            .context-grid {
+                grid-template-columns: 1fr;
+            }
+            .example-card {
+                grid-template-columns: 1fr;
+            }
+            .drop-zones {
+                grid-template-columns: 1fr;
+            }
+            .memory-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.5rem;
+            }
+            nav {
+                padding: 0.8rem 1.2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-title {
+                font-size: clamp(2.5rem, 12vw, 5rem);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="starfield"></canvas>
+    <div class="cursor" id="cur"></div>
+    <div class="cursor-ring" id="curRing"></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-logo">∑ Enfoque Sistémico</div>
+        <div class="nav-links">
+            <a href="#contextualizacion">Contexto</a>
+            <a href="#conceptos">Conceptos</a>
+            <a href="#ejemplos">Ejemplos</a>
+            <a href="#videos">Videos</a>
+            <a href="#ejercicios">Ejercicios</a>
+            <a href="#juegos">Juegos</a>
+            <a href="#quiz">Quiz</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero">
+        <div class="hero-orb orb1"></div>
+        <div class="hero-orb orb2"></div>
+        <div class="hero-orb orb3"></div>
+        <div class="hero-label">Teoría General de Sistemas · OVA</div>
+        <h1 class="hero-title">
+            <span class="line1">El Enfoque</span>
+            <span class="line2">Sistémico</span>
+        </h1>
+        <p class="hero-sub">Una forma de comprender la realidad como un conjunto de elementos interconectados que funcionan como un todo coherente y dinámico.</p>
+        <div class="hero-cta">
+            <a href="#contextualizacion" class="btn-primary">Comenzar exploración</a>
+            <a href="#quiz" class="btn-outline">Ir al Quiz</a>
+        </div>
+        <div class="scroll-hint">
+            <div class="scroll-line"></div>
+            Desplaza
+        </div>
+    </section>
+
+    <!-- CONTEXTUALIZACIÓN -->
+    <section id="contextualizacion">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">01 · Contextualización</div>
+                <h2 class="section-title">¿Qué es el <span>Enfoque Sistémico</span>?</h2>
+            </div>
+            <div class="context-grid">
+                <div class="context-text">
+                    <p>El <strong>enfoque sistémico</strong> surge como respuesta a la visión reduccionista tradicional que analiza los fenómenos descomponiéndolos en partes aisladas. A diferencia de este método, el pensamiento sistémico propone observar
+                        la realidad como un conjunto de <strong>elementos interrelacionados</strong> que forman un todo con propiedades emergentes.</p>
+                    <p>Originado con las ideas de <strong>Ludwig von Bertalanffy</strong> en la primera mitad del siglo XX, este enfoque revolucionó la ciencia al proponer que los mismos principios generales podían aplicarse a sistemas de cualquier naturaleza:
+                        biológicos, sociales, tecnológicos o económicos.</p>
+                    <p>Hoy el enfoque sistémico es fundamental en disciplinas como la <strong>ingeniería de sistemas</strong>, administración, ecología, psicología y muchas más, permitiendo entender la complejidad del mundo moderno.</p>
+                    <p>Su poder radica en que permite ver <strong>patrones, relaciones y dinámicas</strong> que serían invisibles si analizamos los componentes de forma aislada.</p>
+                </div>
+                <div class="context-visual">
+                    <svg class="sys-diagram" viewBox="0 0 360 360" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="rg1" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#5b21d4" stop-opacity="0.4"/>
+              <stop offset="100%" stop-color="#5b21d4" stop-opacity="0"/>
+            </radialGradient>
+            <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+              <path d="M0,0 L6,3 L0,6 Z" fill="#7c3aed" opacity="0.7"/>
+            </marker>
+          </defs>
+          <circle cx="180" cy="180" r="140" fill="url(#rg1)" stroke="rgba(124,58,237,0.2)" stroke-width="1"/>
+          <circle cx="180" cy="180" r="90" fill="none" stroke="rgba(77,166,255,0.15)" stroke-width="1" stroke-dasharray="4 4"/>
+          <!-- Nodos -->
+          <circle cx="180" cy="60" r="28" fill="rgba(91,33,212,0.3)" stroke="rgba(124,58,237,0.6)" stroke-width="1.5"/>
+          <circle cx="290" cy="150" r="28" fill="rgba(59,91,255,0.3)" stroke="rgba(77,166,255,0.6)" stroke-width="1.5"/>
+          <circle cx="255" cy="290" r="28" fill="rgba(91,33,212,0.3)" stroke="rgba(124,58,237,0.6)" stroke-width="1.5"/>
+          <circle cx="105" cy="290" r="28" fill="rgba(59,91,255,0.3)" stroke="rgba(77,166,255,0.6)" stroke-width="1.5"/>
+          <circle cx="70" cy="150" r="28" fill="rgba(91,33,212,0.3)" stroke="rgba(124,58,237,0.6)" stroke-width="1.5"/>
+          <circle cx="180" cy="180" r="32" fill="rgba(180,77,255,0.2)" stroke="rgba(180,77,255,0.6)" stroke-width="2"/>
+          <!-- Conexiones -->
+          <line x1="180" y1="88" x2="262" y2="150" stroke="rgba(124,58,237,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="290" y1="178" x2="255" y2="262" stroke="rgba(77,166,255,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="228" y1="295" x2="133" y2="295" stroke="rgba(124,58,237,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="80" y1="268" x2="68" y2="178" stroke="rgba(77,166,255,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="97" y1="127" x2="170" y2="72" stroke="rgba(124,58,237,0.4)" stroke-width="1.5" marker-end="url(#arr)"/>
+          <line x1="180" y1="148" x2="180" y2="88" stroke="rgba(180,77,255,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+          <line x1="210" y1="162" x2="262" y2="150" stroke="rgba(180,77,255,0.3)" stroke-width="1" stroke-dasharray="3 3"/>
+          <!-- Labels -->
+          <text x="180" y="55" text-anchor="middle" font-size="9" fill="#c4a1ff" font-family="Space Grotesk">ENTRADA</text>
+          <text x="295" y="145" text-anchor="start" font-size="8" fill="#a5bbff" font-family="Space Grotesk">PROCESO</text>
+          <text x="255" y="300" text-anchor="middle" font-size="9" fill="#c4a1ff" font-family="Space Grotesk">SALIDA</text>
+          <text x="105" y="300" text-anchor="middle" font-size="9" fill="#a5bbff" font-family="Space Grotesk">RETRO-</text>
+          <text x="105" y="309" text-anchor="middle" font-size="9" fill="#a5bbff" font-family="Space Grotesk">ALI.</text>
+          <text x="58" y="145" text-anchor="end" font-size="9" fill="#c4a1ff" font-family="Space Grotesk">ENTORNO</text>
+          <text x="180" y="184" text-anchor="middle" font-size="9" fill="#ddc9ff" font-weight="bold" font-family="Space Grotesk">SISTEMA</text>
+        </svg>
+                </div>
+            </div>
+
+            <!-- Características clave -->
+            <div class="cards-grid" style="margin-top:3rem;">
+                <div class="card">
+                    <div class="card-icon">🌐</div>
+                    <h3>Visión Holística</h3>
+                    <p>El todo es más que la suma de sus partes. El sistema posee propiedades emergentes que sus componentes individualmente no tienen.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Interdependencia</h3>
+                    <p>Los elementos del sistema están interconectados. Un cambio en cualquier parte afecta al resto del conjunto.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Retroalimentación</h3>
+                    <p>Los sistemas utilizan información sobre sus salidas para ajustar su comportamiento y mantener el equilibrio o cambiar.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🌿</div>
+                    <h3>Adaptabilidad</h3>
+                    <p>Los sistemas abiertos intercambian energía e información con su entorno, permitiéndoles evolucionar y adaptarse.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPTOS -->
+    <section id="conceptos">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">02 · Conceptos Teóricos</div>
+                <h2 class="section-title">Fundamentos del <span>Pensamiento Sistémico</span></h2>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+                <div class="timeline">
+                    <div class="timeline-item" style="animation-delay:0.1s">
+                        <div class="timeline-dot"></div>
+                        <div class="concept-badge">CONCEPTO BASE</div>
+                        <h3>Sistema</h3>
+                        <p>Conjunto organizado de elementos interrelacionados que actúan de forma coordinada para lograr un propósito. Todo sistema tiene límites, estructura, función y comportamiento.</p>
+                    </div>
+                    <div class="timeline-item" style="animation-delay:0.2s">
+                        <div class="timeline-dot" style="background:var(--blue-400)"></div>
+                        <div class="concept-badge">TIPOS</div>
+                        <h3>Sistemas Abiertos vs Cerrados</h3>
+                        <p>Los sistemas <strong style="color:var(--violet-300)">abiertos</strong> intercambian materia, energía e información con su entorno (seres vivos, organizaciones). Los <strong style="color:var(--blue-300)">cerrados</strong> tienen
+                            intercambio limitado (motores mecánicos).</p>
+                    </div>
+                    <div class="timeline-item" style="animation-delay:0.3s">
+                        <div class="timeline-dot"></div>
+                        <div class="concept-badge">PROPIEDAD</div>
+                        <h3>Emergencia</h3>
+                        <p>Propiedades del sistema que no pueden explicarse solo por sus partes. El agua moja, pero el hidrógeno y el oxígeno solos no mojan. La conciencia emerge del cerebro, no de las neuronas individuales.</p>
+                    </div>
+                    <div class="timeline-item" style="animation-delay:0.4s">
+                        <div class="timeline-dot" style="background:var(--blue-400)"></div>
+                        <div class="concept-badge">MECANISMO</div>
+                        <h3>Retroalimentación (Feedback)</h3>
+                        <p>Proceso por el cual las salidas del sistema vuelven como entradas para regular su comportamiento. Puede ser <em style="color:var(--violet-300)">negativa</em> (estabilizadora) o <em style="color:var(--accent2)">positiva</em> (amplificadora).</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="timeline">
+                        <div class="timeline-item" style="animation-delay:0.15s">
+                            <div class="timeline-dot" style="background:var(--accent)"></div>
+                            <div class="concept-badge">CONCEPTO</div>
+                            <h3>Entropía y Negentropía</h3>
+                            <p>La entropía es la tendencia al desorden. Los sistemas abiertos combaten la entropía importando energía del entorno (negentropía), manteniéndose organizados y funcionales.</p>
+                        </div>
+                        <div class="timeline-item" style="animation-delay:0.25s">
+                            <div class="timeline-dot"></div>
+                            <div class="concept-badge">PRINCIPIO</div>
+                            <h3>Homeostasis</h3>
+                            <p>Capacidad de un sistema para mantener su estado interno estable ante cambios externos. El cuerpo humano mantiene temperatura, pH y presión arterial mediante mecanismos homeostáticos.</p>
+                        </div>
+                        <div class="timeline-item" style="animation-delay:0.35s">
+                            <div class="timeline-dot" style="background:var(--blue-400)"></div>
+                            <div class="concept-badge">NIVEL</div>
+                            <h3>Jerarquía de Sistemas</h3>
+                            <p>Los sistemas se organizan en niveles: cada sistema es un subsistema de un supersistema mayor. Una célula es parte de un tejido, que es parte de un órgano, de un organismo, de una población.</p>
+                        </div>
+                        <div class="timeline-item" style="animation-delay:0.45s">
+                            <div class="timeline-dot" style="background:var(--accent)"></div>
+                            <div class="concept-badge">COMPORTAMIENTO</div>
+                            <h3>Equifinalidad</h3>
+                            <p>Un sistema puede alcanzar el mismo estado final desde diferentes condiciones iniciales y por diferentes caminos. El resultado depende más de la naturaleza del sistema que del punto de partida.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="props-grid" style="margin-top:3rem;">
+                <div class="prop-card">
+                    <div class="prop-num">01</div>
+                    <h4>Totalidad</h4>
+                    <p>El sistema no es la suma de sus partes, sino un todo integrado</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-num">02</div>
+                    <h4>Sinergia</h4>
+                    <p>La cooperación entre partes produce resultados mayores que actuando por separado</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-num">03</div>
+                    <h4>Recursividad</h4>
+                    <p>Los sistemas contienen subsistemas con las mismas propiedades del sistema mayor</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-num">04</div>
+                    <h4>Autoorganización</h4>
+                    <p>Los sistemas complejos pueden generar orden internamente sin control externo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EJEMPLOS -->
+    <section id="ejemplos">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">03 · Ejemplos Prácticos</div>
+                <h2 class="section-title">Sistemas en la <span>Vida Real</span></h2>
+            </div>
+            <div class="examples-tabs">
+                <button class="tab-btn active" onclick="showTab('tab-bio',this)">🌿 Biológico</button>
+                <button class="tab-btn" onclick="showTab('tab-org',this)">🏢 Organizacional</button>
+                <button class="tab-btn" onclick="showTab('tab-tec',this)">💻 Tecnológico</button>
+                <button class="tab-btn" onclick="showTab('tab-eco',this)">🌍 Ecológico</button>
+            </div>
+            <div id="tab-bio" class="tab-panel active">
+                <div class="example-card">
+                    <div>
+                        <h3>El Cuerpo Humano</h3>
+                        <p>El cuerpo humano es un sistema biológico complejo donde múltiples subsistemas (circulatorio, nervioso, digestivo, inmune) interactúan constantemente para mantener la homeostasis.</p>
+                        <p><strong style="color:var(--violet-300)">Entradas:</strong> alimentos, agua, oxígeno, información sensorial.</p>
+                        <p><strong style="color:var(--blue-300)">Proceso:</strong> metabolismo, regulación hormonal, respuesta inmune.</p>
+                        <p><strong style="color:var(--accent)">Salidas:</strong> energía, movimiento, calor, dióxido de carbono.</p>
+                        <p><strong style="color:var(--violet-200)">Retroalimentación:</strong> temperatura corporal regulada por sudoración y vasoconstricción.</p>
+                    </div>
+                    <div class="example-visual">🫀</div>
+                </div>
+            </div>
+            <div id="tab-org" class="tab-panel">
+                <div class="example-card">
+                    <div>
+                        <h3>Una Empresa como Sistema</h3>
+                        <p>Una organización es un sistema sociotécnico abierto que transforma recursos en productos o servicios, interactuando permanentemente con su entorno (mercado, sociedad, reguladores).</p>
+                        <p><strong style="color:var(--violet-300)">Entradas:</strong> capital, talento humano, materias primas, información de mercado.</p>
+                        <p><strong style="color:var(--blue-300)">Proceso:</strong> producción, gestión, innovación, marketing.</p>
+                        <p><strong style="color:var(--accent)">Salidas:</strong> productos, servicios, empleo, valor económico.</p>
+                        <p><strong style="color:var(--violet-200)">Retroalimentación:</strong> satisfacción del cliente, indicadores financieros, benchmarking.</p>
+                    </div>
+                    <div class="example-visual">🏭</div>
+                </div>
+            </div>
+            <div id="tab-tec" class="tab-panel">
+                <div class="example-card">
+                    <div>
+                        <h3>Internet como Sistema</h3>
+                        <p>Internet es uno de los sistemas tecnológicos más complejos creados por la humanidad: millones de nodos, protocolos, datos y usuarios interactuando en tiempo real, con propiedades emergentes imposibles de diseñar de forma centralizada.</p>
+                        <p><strong style="color:var(--violet-300)">Entradas:</strong> datos, consultas, contenido generado por usuarios.</p>
+                        <p><strong style="color:var(--blue-300)">Proceso:</strong> enrutamiento, indexación, procesamiento distribuido.</p>
+                        <p><strong style="color:var(--accent)">Salidas:</strong> información, comunicación, servicios, comercio electrónico.</p>
+                        <p><strong style="color:var(--violet-200)">Emergencia:</strong> la "web social" y el conocimiento colectivo como propiedades no planeadas.</p>
+                    </div>
+                    <div class="example-visual">🌐</div>
+                </div>
+            </div>
+            <div id="tab-eco" class="tab-panel">
+                <div class="example-card">
+                    <div>
+                        <h3>Un Ecosistema Forestal</h3>
+                        <p>Un bosque es un sistema ecológico donde plantas, animales, microorganismos, suelo, agua y clima forman una red de interdependencias tan compleja que la eliminación de una sola especie puede desencadenar efectos en cascada.</p>
+                        <p><strong style="color:var(--violet-300)">Entradas:</strong> energía solar, lluvia, nutrientes del suelo, semillas.</p>
+                        <p><strong style="color:var(--blue-300)">Proceso:</strong> fotosíntesis, cadenas tróficas, ciclos biogeoquímicos.</p>
+                        <p><strong style="color:var(--accent)">Salidas:</strong> oxígeno, biomasa, regulación climática, biodiversidad.</p>
+                        <p><strong style="color:var(--violet-200)">Autoorganización:</strong> sucesión ecológica y restauración natural tras perturbaciones.</p>
+                    </div>
+                    <div class="example-visual">🌲</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">04 · Videos</div>
+                <h2 class="section-title">Aprende con <span>Recursos Audiovisuales</span></h2>
+            </div>
+            <div class="videos-grid">
+                <div class="video-wrapper">
+                    <div class="video-thumb">
+                        <iframe src="https://www.youtube.com/embed/tAPOnUCIa3s" title="¿Qué es la TEORÍA DE SISTEMAS? Características, autores y ejemplos" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>¿Qué es la TEORÍA DE SISTEMAS? Características, autores y ejemplos</h4>
+                        <p>Fundamentos del enfoque sistémico y cómo aplicarlo en la vida cotidiana</p>
+                    </div>
+                </div>
+                <div class="video-wrapper">
+                    <div class="video-thumb">
+                        <iframe src="https://www.youtube.com/embed/7TUTtyLsyik" title="¿Qué es la TEORÍA DE SISTEMAS? Ludwing Von Bertalanffy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>¿Qué es la TEORÍA DE SISTEMAS? Ludwing Von Bertalanffy</h4>
+                        <p>Explicación de los principios de Von Bertalanffy y sus aplicaciones</p>
+                    </div>
+                </div>
+                <div class="video-wrapper">
+                    <div class="video-thumb">
+                        <iframe src="https://www.youtube.com/embed/-GUb30TfwtI" Enfoque Sistémico - Teoría General de los Sistemas " allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+                    </div>
+                    <div class="video-info">
+                        <h4>Enfoque Sistémico - Teoría General de los Sistemas</h4>
+                        <p>Cómo emergen propiedades complejas en sistemas aparentemente simples</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EJERCICIOS -->
+    <section id="ejercicios">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">05 · Ejercicios</div>
+                <h2 class="section-title">Pon en práctica tu <span>Comprensión</span></h2>
+            </div>
+            <div class="exercises-list">
+                <div class="exercise-item">
+                    <div class="exercise-num">EJERCICIO 01</div>
+                    <h3>Identificación de Componentes Sistémicos</h3>
+                    <p>Selecciona un sistema de tu entorno cotidiano (puede ser una familia, un equipo de fútbol, una red social digital o un restaurant). Identifica y describe: sus <span class="highlight">entradas</span>, <span class="highlight">procesos</span>,
+                        <span class="highlight">salidas</span>, <span class="highlight">retroalimentación</span> y <span class="highlight">entorno</span>. Explica cómo sus elementos están interrelacionados.</p>
+                    <textarea class="exercise-textarea" placeholder="Escribe aquí tu análisis sistémico del sistema elegido..."></textarea>
+                    <button class="btn-small" onclick="showFeedback(this,
+                            '✅ ¡Excelente! Recuerda identificar al menos 3 elementos de cada componente y destacar cómo se retroalimenta el sistema. Un buen análisis sistémico siempre muestra las relaciones, no solo los elementos.')">Verificar respuesta</button>
+                    <div class="feedback-msg">✅ ¡Excelente! Recuerda identificar al menos 3 elementos de cada componente y destacar cómo se retroalimenta el sistema.</div>
+                </div>
+                <div class="exercise-item">
+                    <div class="exercise-num">EJERCICIO 02</div>
+                    <h3>Análisis de Retroalimentación</h3>
+                    <p>El siguiente escenario describe un bucle de retroalimentación: <em style="color:var(--violet-300)">"Una empresa lanza un producto al mercado, recibe quejas de los clientes, mejora el producto, las ventas suben, decide reducir
+                            costos de calidad, los clientes vuelven a quejarse... "</em><br><br>Clasifica
+                        el tipo de retroalimentación presente, dibuja (descríbelo textualmente) el diagrama de bucle y propón una intervención sistémica para mejorar la situación.</p>
+                    <textarea class="exercise-textarea" placeholder="Analiza el tipo de retroalimentación, describe el bucle y propón la intervención sistémica..."></textarea>
+                    <button class="btn-small" onclick="showFeedback(this,
+                            '✅ Análisis guardado. Este escenario ilustra un bucle de retroalimentación positiva (amplificadora) que lleva a un ciclo de deterioro. Una intervención efectiva podría ser establecer indicadores de calidad con umbrales mínimos que activen mecanismos correctivos automáticos.')">Verificar respuesta</button>
+                    <div class="feedback-msg"></div>
+                </div>
+                <div class="exercise-item">
+                    <div class="exercise-num">EJERCICIO 03</div>
+                    <h3>Comparación de Enfoques</h3>
+                    <p>Analiza el siguiente problema desde dos perspectivas: la visión <span class="highlight">reduccionista</span> y la visión <span class="highlight">sistémica</span>: <em style="color:var(--violet-300)">"El rendimiento académico
+                            de los estudiantes de primer semestre es bajo. "</em><br><br>¿Qué
+                        aspectos identificaría cada enfoque? ¿Qué soluciones propondría cada uno? ¿Cuál considera más completo y por qué?</p>
+                    <textarea class="exercise-textarea" style="min-height:130px" placeholder="Describe ambos enfoques, sus diferencias y justifica cuál es más adecuado para este problema..."></textarea>
+                    <button class="btn-small" onclick="showFeedback(this,
+                            '✅ Análisis registrado. El enfoque sistémico identificaría factores como: metodologías de enseñanza, contexto socioeconómico, dinámicas familiares, diseño curricular, políticas institucionales y su interacción, mientras que el reduccionista buscaría una causa única como el rendimiento individual del estudiante.')">Verificar respuesta</button>
+                    <div class="feedback-msg"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JUEGOS -->
+    <section id="juegos">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">06 · Juegos Interactivos</div>
+                <h2 class="section-title">Aprende <span>Jugando</span></h2>
+            </div>
+            <div class="games-nav">
+                <button class="game-nav-btn active" onclick="switchGame('g1',this)">🎯 Clasifica Conceptos</button>
+                <button class="game-nav-btn" onclick="switchGame('g2',this)">🧠 Memoria Sistémica</button>
+                <button class="game-nav-btn" onclick="switchGame('g3',this)">⚡ Quiz Relámpago</button>
+            </div>
+
+            <!-- GAME 1: Drag & Drop Clasificación -->
+            <div id="g1" class="game-container active">
+                <div class="game-box">
+                    <h3>🎯 Clasifica los Conceptos Sistémicos</h3>
+                    <p class="game-desc">Arrastra cada concepto a la categoría correcta: <strong style="color:var(--violet-300)">Propiedad del Sistema</strong> o <strong style="color:var(--blue-300)">Componente del Sistema</strong>. ¡Gana puntos por cada acierto!</p>
+                    <div class="drag-area" id="dragPool">
+                        <div class="drag-item" draggable="true" data-cat="propiedad">Emergencia</div>
+                        <div class="drag-item" draggable="true" data-cat="componente">Entradas</div>
+                        <div class="drag-item" draggable="true" data-cat="propiedad">Homeostasis</div>
+                        <div class="drag-item" draggable="true" data-cat="componente">Retroalimentación</div>
+                        <div class="drag-item" draggable="true" data-cat="propiedad">Sinergia</div>
+                        <div class="drag-item" draggable="true" data-cat="componente">Salidas</div>
+                        <div class="drag-item" draggable="true" data-cat="propiedad">Equifinalidad</div>
+                        <div class="drag-item" draggable="true" data-cat="componente">Entorno</div>
+                        <div class="drag-item" draggable="true" data-cat="propiedad">Entropía</div>
+                        <div class="drag-item" draggable="true" data-cat="componente">Procesos</div>
+                    </div>
+                    <div class="drop-zones">
+                        <div class="drop-zone" id="zone-propiedad" data-cat="propiedad">
+                            <div class="drop-zone-label">🌟 Propiedad del Sistema</div>
+                        </div>
+                        <div class="drop-zone" id="zone-componente" data-cat="componente">
+                            <div class="drop-zone-label">⚙️ Componente del Sistema</div>
+                        </div>
+                    </div>
+                    <div class="game-score">
+                        <div>
+                            <div class="score-val" id="g1Score">0</div>
+                            <div style="font-size:0.72rem;color:var(--text-faint);font-family: 'JetBrains Mono',monospace">PUNTOS</div>
+                        </div>
+                        <div style="font-size:0.85rem;color:var(--text-dim)" id="g1Msg">Arrastra los conceptos a su categoría correcta ✨</div>
+                        <button class="btn-small" style="margin-top:0;margin-left:auto" onclick="resetGame1()">Reiniciar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 2: Memory -->
+            <div id="g2" class="game-container">
+                <div class="game-box">
+                    <h3>🧠 Memoria Sistémica</h3>
+                    <p class="game-desc">Encuentra las parejas: cada concepto con su definición. Haz clic en dos tarjetas para voltearlas. ¡Menos intentos = mejor puntuación!</p>
+                    <div class="memory-stats">
+                        <div>Intentos: <span id="memAttempts">0</span></div>
+                        <div>Parejas: <span id="memPairs">0</span>/6</div>
+                        <div>Puntos: <span id="memScore">0</span></div>
+                    </div>
+                    <div class="memory-grid" id="memGrid"></div>
+                    <div style="text-align:center">
+                        <button class="btn-small" style="margin-top:0" onclick="initMemory()">Nuevo juego</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GAME 3: Quick Quiz -->
+            <div id="g3" class="game-container">
+                <div class="game-box">
+                    <h3>⚡ Quiz Relámpago</h3>
+                    <p class="game-desc">Responde estas preguntas rápidas sobre el Enfoque Sistémico. ¡Tienes una sola oportunidad por pregunta!</p>
+                    <div class="quick-quiz" id="qqContainer">
+                        <div class="quiz-progress">
+                            <div class="quiz-bar">
+                                <div class="quiz-fill" id="qqBar" style="width:0%"></div>
+                            </div>
+                            <div class="quiz-counter" id="qqCounter">1 / 6</div>
+                        </div>
+                        <div class="quiz-q" id="qqQ"></div>
+                        <div class="quiz-opts" id="qqOpts"></div>
+                        <div class="quiz-feedback" id="qqFb"></div>
+                        <button class="btn-small" id="qqNext" style="display:none" onclick="qqNext()">Siguiente →</button>
+                    </div>
+                    <div class="quiz-result" id="qqResult">
+                        <div class="result-score" id="qqFinalScore">0/6</div>
+                        <p class="result-msg" id="qqFinalMsg"></p>
+                        <button class="btn-small" onclick="initQuickQuiz()">Jugar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVALUACIÓN -->
+    <section id="quiz">
+        <div class="section-wrap">
+            <div class="section-header">
+                <div class="section-tag">07 · Evaluación</div>
+                <h2 class="section-title">Quiz <span>Evaluativo</span></h2>
+            </div>
+            <div class="quiz-eval" id="evalForm">
+                <div class="quiz-eval-q">
+                    <p>1. ¿Cuál es la principal diferencia entre el enfoque sistémico y el reduccionista?</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q1" data-v="a">El sistémico analiza solo las partes</button>
+                        <button class="quiz-eval-opt" data-q="q1" data-v="b">El sistémico estudia el todo y las interrelaciones entre elementos</button>
+                        <button class="quiz-eval-opt" data-q="q1" data-v="c">El reduccionista es más completo y abarca más variables</button>
+                        <button class="quiz-eval-opt" data-q="q1" data-v="d">No existe diferencia significativa entre ambos</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>2. ¿Qué propiedad describe el hecho de que el sistema puede lograr el mismo resultado desde diferentes condiciones iniciales?</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q2" data-v="a">Homeostasis</button>
+                        <button class="quiz-eval-opt" data-q="q2" data-v="b">Entropía</button>
+                        <button class="quiz-eval-opt" data-q="q2" data-v="c">Equifinalidad</button>
+                        <button class="quiz-eval-opt" data-q="q2" data-v="d">Recursividad</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>3. En un sistema cerrado:</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q3" data-v="a">Hay constante intercambio de energía con el entorno</button>
+                        <button class="quiz-eval-opt" data-q="q3" data-v="b">El intercambio con el entorno es mínimo o nulo</button>
+                        <button class="quiz-eval-opt" data-q="q3" data-v="c">El sistema se adapta continuamente al entorno</button>
+                        <button class="quiz-eval-opt" data-q="q3" data-v="d">La retroalimentación es la principal característica</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>4. La emergencia en un sistema se refiere a:</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q4" data-v="a">La desaparición de propiedades al unir los elementos</button>
+                        <button class="quiz-eval-opt" data-q="q4" data-v="b">Propiedades que posee el sistema pero no sus partes por separado</button>
+                        <button class="quiz-eval-opt" data-q="q4" data-v="c">La suma matemática de las propiedades individuales</button>
+                        <button class="quiz-eval-opt" data-q="q4" data-v="d">El proceso de retroalimentación positiva</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>5. ¿Quién es considerado el padre de la Teoría General de Sistemas?</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q5" data-v="a">Norbert Wiener</button>
+                        <button class="quiz-eval-opt" data-q="q5" data-v="b">Peter Senge</button>
+                        <button class="quiz-eval-opt" data-q="q5" data-v="c">Ludwig von Bertalanffy</button>
+                        <button class="quiz-eval-opt" data-q="q5" data-v="d">Jay Forrester</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>6. La retroalimentación negativa en un sistema tiene como función principal:</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q6" data-v="a">Amplificar las desviaciones del sistema</button>
+                        <button class="quiz-eval-opt" data-q="q6" data-v="b">Llevar al sistema al colapso total</button>
+                        <button class="quiz-eval-opt" data-q="q6" data-v="c">Mantener la estabilidad regulando las desviaciones</button>
+                        <button class="quiz-eval-opt" data-q="q6" data-v="d">Generar nuevas entradas al sistema</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>7. ¿Cuál de los siguientes es un ejemplo de sistema abierto?</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q7" data-v="a">Un reloj mecánico sellado</button>
+                        <button class="quiz-eval-opt" data-q="q7" data-v="b">Una célula viva</button>
+                        <button class="quiz-eval-opt" data-q="q7" data-v="c">Un circuito eléctrico cerrado</button>
+                        <button class="quiz-eval-opt" data-q="q7" data-v="d">Una caja fuerte cerrada herméticamente</button>
+                    </div>
+                </div>
+                <div class="quiz-eval-q">
+                    <p>8. La sinergia en un sistema implica que:</p>
+                    <div class="quiz-eval-opts">
+                        <button class="quiz-eval-opt" data-q="q8" data-v="a">El sistema produce menos que la suma de sus partes</button>
+                        <button class="quiz-eval-opt" data-q="q8" data-v="b">Cada parte actúa de forma completamente independiente</button>
+                        <button class="quiz-eval-opt" data-q="q8" data-v="c">El todo produce más que la simple suma de sus partes</button>
+                        <button class="quiz-eval-opt" data-q="q8" data-v="d">Las partes y el todo tienen exactamente las mismas propiedades</button>
+                    </div>
+                </div>
+                <button class="eval-submit" >Enviar Evaluación →</button>
+            </div>
+            <div class="eval-result" id="evalResult">
+                <div class="eval-big-score" id="evalBigScore"></div>
+                <div class="eval-grade" id="evalGrade"></div>
+                <p style="color:var(--text-dim);font-size:0.9rem;margin-bottom:1.5rem" id="evalMsg"></p>
+                <div class="answers-review" id="answersReview"></div>
+                <button class="btn-small" style="margin-top:1.5rem" >Intentar de nuevo</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <span class="footer-logo">∑ Enfoque Sistémico</span>
+        <p>
+            <strong>Objeto Virtual de Aprendizaje · Teoría General de Sistemas</strong><br> Asignatura: Teoría General de Sistemas (TGS)<br> Docente: Msc. IS. Álvaro Salamanca Landínez
+        </p>
+        <div class="refs">
+            <h4>Referencias Bibliográficas</h4>
+            <ul>
+                <li>Bertalanffy, L. von (1968). <em>General System Theory</em>. George Braziller.</li>
+                <li>Checkland, P. (1999). <em>Systems Thinking, Systems Practice</em>. John Wiley & Sons.</li>
+                <li>Senge, P. (1990). <em>La Quinta Disciplina: El Arte y la Práctica de la Organización Abierta al Aprendizaje</em>. Granica.</li>
+                <li>Meadows, D. (2008). <em>Thinking in Systems: A Primer</em>. Chelsea Green Publishing.</li>
+                <li>García, R. (2006). <em>Sistemas Complejos: Conceptos, Método y Fundamentación Epistemológica</em>. Gedisa.</li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        // NAV SCROLL — explicit smooth scroll for all anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    const id = this.getAttribute('href').slice(1);
+                    const target = document.getElementById(id);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            });
+        });
+
+        // CURSOR
+        const cur = document.getElementById('cur');
+        const curRing = document.getElementById('curRing');
+        document.addEventListener('mousemove', e => {
+            cur.style.left = e.clientX + 'px';
+            cur.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                curRing.style.left = e.clientX + 'px';
+                curRing.style.top = e.clientY + 'px';
+            }, 80);
+        });
+
+        // STARFIELD
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < 180; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    r: Math.random() * 1.2 + 0.2,
+                    o: Math.random() * 0.6 + 0.1,
+                    s: Math.random() * 0.3 + 0.05,
+                    hue: Math.random() > 0.5 ? 260 : 220
+                });
+            }
+        }
+
+        function drawStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            stars.forEach(s => {
+                s.o += (Math.random() - 0.5) * 0.02;
+                s.o = Math.max(0.05, Math.min(0.7, s.o));
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = `hsla(${s.hue}, 80%, 75%, ${s.o})`;
+                ctx.fill();
+            });
+            requestAnimationFrame(drawStars);
+        }
+        resize();
+        initStars();
+        drawStars();
+        window.addEventListener('resize', () => {
+            resize();
+            initStars();
+        });
+
+        // TABS EJEMPLOS
+        function showTab(id, btn) {
+            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        // EJERCICIOS FEEDBACK
+        function showFeedback(btn, msg) {
+            const textarea = btn.previousElementSibling;
+            const fb = btn.nextElementSibling;
+            if (textarea.value.trim().length < 20) {
+                fb.style.display = 'block';
+                fb.style.color = '#f87171';
+                fb.textContent = '\u26a0\ufe0f Por favor, escribe una respuesta m\u00e1s completa antes de verificar.';
+                return;
+            }
+            fb.style.display = 'block';
+            fb.style.color = 'var(--violet-300)';
+            fb.textContent = msg;
+        }
+
+        // GAMES NAV
+        function switchGame(id, btn) {
+            document.querySelectorAll('.game-container').forEach(g => g.classList.remove('active'));
+            document.querySelectorAll('.game-nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            if (btn) btn.classList.add('active');
+        }
+
+        // GAME 1: DRAG & DROP
+        var g1Score = 0;
+
+        function makeDragItem(name, cat) {
+            var d = document.createElement('div');
+            d.className = 'drag-item';
+            d.draggable = true;
+            d.dataset.cat = cat;
+            d.textContent = name;
+            d.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('text/plain', d.dataset.cat + '|' + d.textContent);
+                d.classList.add('dragging');
+            });
+            d.addEventListener('dragend', function() { d.classList.remove('dragging'); });
+            return d;
+        }
+
+        // Init drag items in pool
+        document.querySelectorAll('.drag-item').forEach(function(item) {
+            item.addEventListener('dragstart', function(e) {
+                e.dataTransfer.setData('text/plain', item.dataset.cat + '|' + item.textContent);
+                item.classList.add('dragging');
+            });
+            item.addEventListener('dragend', function() { item.classList.remove('dragging'); });
+        });
+
+        // Drop zone handlers
+        document.querySelectorAll('.drop-zone').forEach(function(zone) {
+            zone.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                zone.classList.add('dragover');
+            });
+            zone.addEventListener('dragleave', function() { zone.classList.remove('dragover'); });
+            zone.addEventListener('drop', function(e) {
+                e.preventDefault();
+                zone.classList.remove('dragover');
+                var data = e.dataTransfer.getData('text/plain');
+                var parts = data.split('|');
+                var cat = parts[0];
+                var name = parts[1];
+                var isCorrect = cat === zone.dataset.cat;
+                var pool = document.getElementById('dragPool');
+                var original = null;
+                var allItems = pool.querySelectorAll('.drag-item');
+                for (var i = 0; i < allItems.length; i++) {
+                    if (allItems[i].textContent === name) { original = allItems[i]; break; }
+                }
+                if (original) pool.removeChild(original);
+
+                var tag = document.createElement('div');
+                tag.className = 'drag-item';
+                tag.textContent = name;
+                tag.style.cursor = 'default';
+                tag.style.opacity = '0.8';
+
+                if (isCorrect) {
+                    tag.style.background = 'linear-gradient(135deg, rgba(59,91,255,0.35), rgba(59,130,246,0.2))';
+                    tag.style.borderColor = 'rgba(59,130,246,0.5)';
+                    tag.style.color = '#93c5fd';
+                    g1Score += 10;
+                    document.getElementById('g1Score').textContent = g1Score;
+                    document.getElementById('g1Msg').textContent = '\u2705 \u00a1Correcto! +10 puntos';
+                    zone.appendChild(tag);
+                    if (pool.children.length === 0) {
+                        document.getElementById('g1Msg').textContent = '\uD83C\uDF89 \u00a1Completado! Puntuaci\u00f3n final: ' + g1Score;
+                    }
+                } else {
+                    tag.style.background = 'rgba(220,38,38,0.2)';
+                    tag.style.borderColor = 'rgba(220,38,38,0.4)';
+                    tag.style.color = '#fca5a5';
+                    document.getElementById('g1Msg').textContent = '\u274c Incorrecto. Intenta de nuevo.';
+                    zone.appendChild(tag);
+                    setTimeout(function() {
+                        if (tag.parentNode) tag.parentNode.removeChild(tag);
+                        var newItem = makeDragItem(name, cat);
+                        pool.appendChild(newItem);
+                    }, 1000);
+                }
+            });
+        });
+
+        function resetGame1() {
+            var pool = document.getElementById('dragPool');
+            pool.innerHTML = '';
+            var items = [
+                ['Emergencia', 'propiedad'],
+                ['Entradas', 'componente'],
+                ['Homeostasis', 'propiedad'],
+                ['Retroalimentaci\u00f3n', 'componente'],
+                ['Sinergia', 'propiedad'],
+                ['Salidas', 'componente'],
+                ['Equifinalidad', 'propiedad'],
+                ['Entorno', 'componente'],
+                ['Entrop\u00eda', 'propiedad'],
+                ['Procesos', 'componente']
+            ];
+            items.forEach(function(pair) {
+                pool.appendChild(makeDragItem(pair[0], pair[1]));
+            });
+            document.querySelectorAll('.drop-zone').forEach(function(z) {
+                while (z.children.length > 1) z.removeChild(z.lastChild);
+            });
+            g1Score = 0;
+            document.getElementById('g1Score').textContent = '0';
+            document.getElementById('g1Msg').textContent = 'Arrastra los conceptos a su categor\u00eda correcta \u2728';
+        }
+
+        // GAME 2: MEMORY
+        const memPairs = [{
+            emoji: '🌀',
+            text: 'Emergencia'
+        }, {
+            emoji: '⚖️',
+            text: 'Homeostasis'
+        }, {
+            emoji: '🔄',
+            text: 'Retroalimentación'
+        }, {
+            emoji: '🌿',
+            text: 'Entropía'
+        }, {
+            emoji: '🔗',
+            text: 'Sinergia'
+        }, {
+            emoji: '🎯',
+            text: 'Equifinalidad'
+        }];
+        let memFlipped = [],
+            memMatched = 0,
+            memAttempts = 0,
+            memLock = false;
+
+        function initMemory() {
+            memFlipped = [];
+            memMatched = 0;
+            memAttempts = 0;
+            memLock = false;
+            document.getElementById('memAttempts').textContent = 0;
+            document.getElementById('memPairs').textContent = '0';
+            document.getElementById('memScore').textContent = 0;
+            const grid = document.getElementById('memGrid');
+            grid.innerHTML = '';
+            const cards = [];
+            memPairs.forEach((p, i) => {
+                cards.push({
+                    id: i,
+                    type: 'emoji',
+                    val: p.emoji
+                });
+                cards.push({
+                    id: i,
+                    type: 'text',
+                    val: p.text
+                });
+            });
+            cards.sort(() => Math.random() - 0.5);
+            cards.forEach(c => {
+                const card = document.createElement('div');
+                card.className = 'mem-card';
+                card.dataset.id = c.id;
+                card.dataset.type = c.type;
+                card.innerHTML = `<div class="mem-back">🔮</div><div class="mem-front">${c.val}</div>`;
+                card.addEventListener('click', () => memFlip(card));
+                grid.appendChild(card);
+            });
+        }
+
+        function memFlip(card) {
+            if (memLock || card.classList.contains('flipped') || card.classList.contains('matched')) return;
+            card.classList.add('flipped');
+            memFlipped.push(card);
+            if (memFlipped.length === 2) {
+                memLock = true;
+                memAttempts++;
+                document.getElementById('memAttempts').textContent = memAttempts;
+                const [a, b] = memFlipped;
+                if (a.dataset.id === b.dataset.id && a.dataset.type !== b.dataset.type) {
+                    a.classList.add('matched');
+                    b.classList.add('matched');
+                    memMatched++;
+                    document.getElementById('memPairs').textContent = memMatched;
+                    const pts = Math.max(10, 30 - memAttempts * 2);
+                    const prev = parseInt(document.getElementById('memScore').textContent);
+                    document.getElementById('memScore').textContent = prev + pts;
+                    memFlipped = [];
+                    memLock = false;
+                    if (memMatched === 6) setTimeout(() => alert('🎉 ¡Completaste el juego! Puntuación: ' + document.getElementById('memScore').textContent), 300);
+                } else {
+                    setTimeout(() => {
+                        a.classList.remove('flipped');
+                        b.classList.remove('flipped');
+                        memFlipped = [];
+                        memLock = false;
+                    }, 900);
+                }
+            }
+        }
+        initMemory();
+
+        // GAME 3: QUICK QUIZ
+        const qqData = [{
+            q: '¿Qué estudia la Teoría General de Sistemas?',
+            opts: ['Solo sistemas mecánicos', 'Principios aplicables a sistemas de cualquier tipo', 'Exclusivamente los sistemas biológicos', 'Sistemas de cómputo'],
+            ans: 1,
+            exp: '¡Correcto! La TGS busca principios isomórficos aplicables a cualquier tipo de sistema.'
+        }, {
+            q: 'Una empresa que recibe retroalimentación de sus clientes para mejorar productos ejemplifica:',
+            opts: ['Sistema cerrado', 'Entropía máxima', 'Sistema abierto con retroalimentación', 'Reduccionismo'],
+            ans: 2,
+            exp: '¡Exacto! Intercambio con el entorno + retroalimentación = sistema abierto adaptativo.'
+        }, {
+            q: 'La homeostasis es la capacidad del sistema de:',
+            opts: ['Generar el máximo desorden posible', 'Mantener su equilibrio interno ante cambios externos', 'Crecer indefinidamente', 'Eliminar todos sus subsistemas'],
+            ans: 1,
+            exp: '¡Correcto! La homeostasis es el mecanismo regulador que mantiene el equilibrio.'
+        }, {
+            q: '¿Cuál propiedad dice que "el todo es más que la suma de sus partes "?',
+            opts: ['Recursividad', 'Entropía', 'Holismo / Emergencia', 'Equifinalidad'],
+            ans: 2,
+            exp: '¡Bien! El holismo y la emergencia explican las propiedades que surgen solo en el todo.'
+        }, {
+            q: 'Un termostato que activa la calefacción cuando baja la temperatura es un ejemplo de:',
+            opts: ['Retroalimentación positiva', 'Retroalimentación negativa', 'Sinergia', 'Entropía'],
+            ans: 1,
+            exp: '¡Exacto! La retroalimentación negativa corrige y estabiliza el sistema.'
+        }, {
+            q: 'La recursividad en sistemas significa que:',
+            opts: ['El sistema colapsará inevitablemente', 'Los subsistemas tienen las mismas propiedades sistémicas que el sistema mayor', 'Solo existen dos niveles de organización', 'Las entradas y salidas son siempre iguales'],
+            ans: 1,
+            exp: '¡Correcto! La recursividad implica que los subsistemas replican la estructura sistémica del todo.'
+        }];
+        let qqIdx = 0,
+            qqScore = 0;
+
+        function initQuickQuiz() {
+            qqIdx = 0;
+            qqScore = 0;
+            document.getElementById('qqContainer').style.display = 'block';
+            document.getElementById('qqResult').classList.remove('show');
+            renderQQ();
+        }
+
+        function renderQQ() {
+            const d = qqData[qqIdx];
+            document.getElementById('qqQ').textContent = d.q;
+            document.getElementById('qqBar').style.width = (qqIdx / qqData.length * 100) + '%';
+            document.getElementById('qqCounter').textContent = (qqIdx + 1) + ' / ' + qqData.length;
+            const opts = document.getElementById('qqOpts');
+            opts.innerHTML = '';
+            d.opts.forEach((o, i) => {
+                const btn = document.createElement('button');
+                btn.className = 'quiz-opt';
+                btn.textContent = o;
+                btn.onclick = () => selectQQ(i, btn);
+                opts.appendChild(btn);
+            });
+            document.getElementById('qqFb').className = 'quiz-feedback';
+            document.getElementById('qqNext').style.display = 'none';
+        }
+
+        function selectQQ(i, btn) {
+            const d = qqData[qqIdx];
+            document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+            const fb = document.getElementById('qqFb');
+            if (i === d.ans) {
+                btn.classList.add('correct');
+                qqScore++;
+                fb.className = 'quiz-feedback show ok';
+                fb.textContent = '✅ ' + d.exp;
+            } else {
+                btn.classList.add('wrong');
+                document.querySelectorAll('.quiz-opt')[d.ans].classList.add('correct');
+                fb.className = 'quiz-feedback show fail';
+                fb.textContent = '❌ ' + d.exp;
+            }
+            document.getElementById('qqNext').style.display = 'inline-block';
+        }
+
+        function qqNext() {
+            qqIdx++;
+            if (qqIdx < qqData.length) {
+                renderQQ();
+            } else {
+                document.getElementById('qqContainer').style.display = 'none';
+                const res = document.getElementById('qqResult');
+                res.classList.add('show');
+                document.getElementById('qqFinalScore').textContent = qqScore + '/' + qqData.length;
+                const msgs = ['Sigue estudiando 📚', 'Vas por buen camino 🌱', '¡Buen trabajo! 🎯', '¡Excelente dominio! 🚀'];
+                document.getElementById('qqFinalMsg').textContent = msgs[Math.floor(qqScore / qqData.length * 3.9)];
+            }
+        }
+        initQuickQuiz();
+
+        // EVALUACIÓN FINAL — movida a script separado al final
+
+// INTERSECTION OBSERVER for cards
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity='1'; e.target.style.transform='none'; } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.card, .prop-card, .video-wrapper').forEach(el => {
+  el.style.opacity='0'; el.style.transform='translateY(20px)'; el.style.transition='opacity 0.5s, transform 0.5s';
+  observer.observe(el);
+});
+    </script>
+
+<script>
+// ===== EVALUACIÓN FINAL — script independiente =====
+(function() {
+    var ANSWERS = { q1:'b', q2:'c', q3:'b', q4:'b', q5:'c', q6:'c', q7:'b', q8:'c' };
+    var CORRECT_TEXTS = {
+        q1: 'El sistémico estudia el todo y las interrelaciones entre elementos',
+        q2: 'Equifinalidad',
+        q3: 'El intercambio con el entorno es mínimo o nulo',
+        q4: 'Propiedades que posee el sistema pero no sus partes por separado',
+        q5: 'Ludwig von Bertalanffy',
+        q6: 'Mantener la estabilidad regulando las desviaciones',
+        q7: 'Una célula viva',
+        q8: 'El todo produce más que la simple suma de sus partes'
+    };
+    var selected = {};
+
+    // Attach click handlers to eval option buttons
+    function attachEvalHandlers() {
+        var opts = document.querySelectorAll('.quiz-eval-opt');
+        opts.forEach(function(btn) {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                var q = btn.getAttribute('data-q');
+                var v = btn.getAttribute('data-v');
+                document.querySelectorAll('.quiz-eval-opt[data-q="' + q + '"]').forEach(function(b) {
+                    b.classList.remove('selected');
+                });
+                btn.classList.add('selected');
+                selected[q] = v;
+            });
+        });
+    }
+
+    function doSubmit(e) {
+        if (e) e.preventDefault();
+        var qs = ['q1','q2','q3','q4','q5','q6','q7','q8'];
+        var score = 0;
+        var review = [];
+        for (var i = 0; i < qs.length; i++) {
+            var q = qs[i];
+            if (!selected[q]) {
+                alert('Por favor responde todas las preguntas antes de enviar.');
+                return;
+            }
+            var correct = selected[q] === ANSWERS[q];
+            if (correct) score++;
+            var selBtn = document.querySelector('.quiz-eval-opt[data-q="' + q + '"][data-v="' + selected[q] + '"]');
+            var label = selBtn ? selBtn.textContent.trim() : selected[q];
+            review.push({ correct: correct, label: label, q: q });
+        }
+
+        // Hide form, show result
+        document.getElementById('evalForm').style.display = 'none';
+        var res = document.getElementById('evalResult');
+        res.style.display = 'block';
+        res.classList.add('show');
+
+        var pct = Math.round(score / qs.length * 100);
+        document.getElementById('evalBigScore').textContent = score + '/' + qs.length;
+        var grade = pct >= 90 ? 'Sobresaliente 🌟' : pct >= 70 ? 'Aprobado ✅' : pct >= 50 ? 'En progreso 📚' : 'Necesita reforzar 💪';
+        document.getElementById('evalGrade').textContent = grade + ' · ' + pct + '%';
+        var msg = pct >= 90 ? '¡Excelente comprensión del enfoque sistémico!'
+                : pct >= 70 ? 'Buen desempeño. Repasa los conceptos donde fallaste.'
+                : pct >= 50 ? 'Vas por buen camino. Te recomendamos repasar la teoría.'
+                : 'Te recomendamos revisar todo el material y volver a intentarlo.';
+        document.getElementById('evalMsg').textContent = msg;
+
+        var rv = document.getElementById('answersReview');
+        rv.innerHTML = '';
+        review.forEach(function(r, idx) {
+            var d = document.createElement('div');
+            d.className = 'ans-item ' + (r.correct ? 'correct' : 'wrong');
+            var html = '<strong>P' + (idx+1) + ':</strong> ' + (r.correct ? '✅' : '❌') + ' ' + r.label;
+            if (!r.correct) {
+                html += '<br><em style="color:var(--violet-300)">Correcto: ' + CORRECT_TEXTS[r.q] + '</em>';
+            }
+            d.innerHTML = html;
+            rv.appendChild(d);
+        });
+    }
+
+    function doReset() {
+        document.getElementById('evalResult').style.display = 'none';
+        document.getElementById('evalResult').classList.remove('show');
+        document.getElementById('evalForm').style.display = 'block';
+        document.querySelectorAll('.quiz-eval-opt').forEach(function(o) { o.classList.remove('selected'); });
+        selected = {};
+    }
+
+    // Script está al final del body — el DOM ya existe, ejecutar directo
+    attachEvalHandlers();
+
+    var submitBtn = document.querySelector('.eval-submit');
+    if (submitBtn) submitBtn.addEventListener('click', doSubmit);
+
+    var resetBtn = document.querySelector('#evalResult .btn-small');
+    if (resetBtn) resetBtn.addEventListener('click', doReset);
+})();
+</script>
+</body>
+
+</html>
